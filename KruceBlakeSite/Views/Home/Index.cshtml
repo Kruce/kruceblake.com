@@ -1,23 +1,21 @@
 ﻿@{
     ViewData["Title"] = "home";
 }
-<!-- About Section -->
+<!--About Section-->
 <section id="about" class="about-section text-center">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 mx-auto">
-                <h2 class="text-white mb-4">Built with Bootstrap 4</h2>
+                <h2 class="text-white mb-4">hello world.</h2>
                 <p class="text-white-50">
-                    Grayscale is a free Bootstrap theme created by Start Bootstrap. It can be yours right now, simply download the template on
-                    <a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.
+                    My name is Kruce Blake and I have been a professional developer since 2011. It is something I am very passionate about and love to do. I am currently doing extensive work in .Net Core. If you would like to see more, please <a href="~/images/Blake, Kruce Resume.pdf">download my resume</a> or continue below to see a few examples of my previous work.
                 </p>
             </div>
         </div>
-        <img src="img/ipad.png" class="img-fluid" alt="">
+        @*<img src="img/ipad.png" class="img-fluid" alt="">*@
     </div>
 </section>
-
-<!-- My Work Section -->
+<!-- Projects Section -->
 <section id="projects" class="projects-section bg-light">
     <div class="container">
         <!-- Featured Project Row -->
@@ -29,12 +27,11 @@
                 <div class="featured-text text-center text-lg-left">
                     <h4>projects</h4>
                     <p class="text-black-50 mb-0">
-                        these are listed in no particular order. all have been created, maintained, modified or rewritten by me at some point throughout my career. click each title to view. i do not host these; some links may be broken.
+                        These are listed in no particular order. All have been created, maintained, modified or rewritten by me at some point throughout my career. Click each title to view. I do not host these; some links may be broken.
                     </p>
                 </div>
             </div>
         </div>
-
         <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
             <div class="col-lg-6">
                 <img class="img-fluid" src="~/lib/grayscale/dist/img/demo-image-01.jpg" alt="">
@@ -43,9 +40,9 @@
                 <div class="bg-black text-center h-100 project">
                     <div class="d-flex h-100">
                         <div class="project-text w-100 my-auto text-center text-lg-left">
-                            <h4 class="text-white"><a target="_blank" href="https://www.octagoncredit.com/">octagon credit investors</a></h4>
-                            <h5 class="text-white">c# mvc, sitecore</h5>
-                            <p class="mb-0 text-white-50">this site was created for conning bank after they acquired octagon credit investors. it uses a cms and allows their team to manage and manipulate content.</p>
+                            <h4 class="text-white"><a class="text-lowercase" target="_blank" href="https://www.fultonbank.com/">fulton bank</a></h4>
+                            <h5 class="text-white text-lowercasee">c#, mvc, entity framework, sitecore</h5>
+                            <p class="mb-0 text-white-50">I did not create this site, but I have worked on and contributed many modules to it. One example of work amongst many that I was involved in would be a page to render YouTube videos provided by the content author.</p>
                             <hr class="d-none d-lg-block mb-0 ml-0">
                         </div>
                     </div>
@@ -60,9 +57,43 @@
                 <div class="bg-black text-center h-100 project">
                     <div class="d-flex h-100">
                         <div class="project-text w-100 my-auto text-center text-lg-right">
-                            <h4 class="text-white"><a target="_blank" href="https://www.fultonbank.com/" >fulton bank</a></h4>
-                            <h5 class="text-white">c#, mvc, entity framework, sitecore</h5>
-                            <p class="mb-0 text-white-50">i did not create this site, but i have worked on and contributed many modules to it. an example of work that i was involved in amongst many would be a page to render youtube videos provided by the content author.</p>
+                            <h4 class="text-white"><a class="text-lowercase" target="_blank" href="https://www.octagoncredit.com/">octagon credit investors</a></h4>
+                            <h5 class="text-white text-lowercase">c# mvc, sitecore</h5>
+                            <p class="mb-0 text-white-50">This site was created for Conning Bank after they acquired Octagon Credit Investors. It uses a CMS and allows their team to manage and manipulate content.</p>
+                            <hr class="d-none d-lg-block mb-0 mr-0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
+            <div class="col-lg-6">
+                <img class="img-fluid" src="~/lib/grayscale/dist/img/demo-image-01.jpg" alt="">
+            </div>
+            <div class="col-lg-6">
+                <div class="bg-black text-center h-100 project">
+                    <div class="d-flex h-100">
+                        <div class="project-text w-100 my-auto text-center text-lg-left">
+                            <h4 class="text-white"><a class="text-lowercase" target="_blank" href="https://www.brettonwoods.com/">breton woods</a></h4>
+                            <h5 class="text-white text-lowercase">c# mvc, sitecore</h5>
+                            <p class="mb-0 text-white-50">I did not create this site, but I have worked on and contributed many modules to it. One example of work amongst many that I was involved in would be a snow report flyout that was made for the content author to show the upcoming amount of snow for the season.</p>
+                            <hr class="d-none d-lg-block mb-0 ml-0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center no-gutters">
+            <div class="col-lg-6">
+                <img class="img-fluid" src="~/lib/grayscale/dist/img/demo-image-02.jpg" alt="">
+            </div>
+            <div class="col-lg-6 order-lg-first">
+                <div class="bg-black text-center h-100 project">
+                    <div class="d-flex h-100">
+                        <div class="project-text w-100 my-auto text-center text-lg-right">
+                            <h4 class="text-white"><a class="text-lowercase" target="_blank" href="https://cobrapublicweb.cityofpsl.com/">Cobra Public Web</a></h4>
+                            <h5 class="text-white text-lowercase">C#, MVC, SQL Database</h5>
+                            <p class="mb-0 text-white-50">This site was created for the City of Port St. Lucie's Engineering Department. It uses C# MVC, and allows the public to pay for reinspection fees online. It requires a login, which is created using our proprietary system of uniquely generated contractor ID's that we've implemented through <a href="https://register.cityofpsl.com/">https://register.cityofpsl.com/</a> .</p>
                             <hr class="d-none d-lg-block mb-0 mr-0">
                         </div>
                     </div>
@@ -71,8 +102,23 @@
         </div>
     </div>
 </section>
+<!-- Blank Sign-Up Section -->
+<section id="sign-up" class="signup-section">
+    <div class="container">
+        <div class="row">
+            @*<div class="col-md-10 col-lg-8 mx-auto text-center">
+                <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
+                <h2 class="text-white mb-5">Subscribe to receive updates!</h2>
+                <form class="form-inline d-flex">
+                    <input type="email" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail" placeholder="Enter email address...">
+                    <button type="submit" class="btn btn-primary mx-auto">Subscribe</button>
+                </form>
+            </div>*@
+        </div>
+    </div>
+</section>
 <!-- Contact Section -->
-<section class="contact-section bg-black">
+<section id="contact" class="contact-section bg-black">
     <div class="container">
         <div class="row">
             <div class="col-md-4 mb-3 mb-md-0">
@@ -93,7 +139,7 @@
                         <h4 class="text-lowercase m-0">email</h4>
                         <hr class="my-4">
                         <div class="small text-black-50">
-                            <a href="#">admin@kruceblake.com</a>
+                            <a href="mailto:admin@kruceblake.com">admin@kruceblake.com</a>
                         </div>
                     </div>
                 </div>
@@ -110,7 +156,6 @@
                 </div>
             </div>
         </div>
-
         <div class="social d-flex justify-content-center">
             <a href="https://www.linkedin.com/in/kruce/" class="mx-2">
                 <i class="fab fa-linkedin"></i>
@@ -119,7 +164,6 @@
                 <i class="fab fa-github"></i>
             </a>
         </div>
-
     </div>
 </section>
 @section Scripts {
