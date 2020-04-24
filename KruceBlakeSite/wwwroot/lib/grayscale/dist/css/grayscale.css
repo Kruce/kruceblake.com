@@ -1,6 +1,6 @@
 /*!
  * Start Bootstrap - Grayscale v5.0.9 (https://startbootstrap.com/template-overviews/grayscale)
- * Copyright 2013-2019 Start Bootstrap
+ * Copyright 2013-2020 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-grayscale/blob/master/LICENSE)
  */
 
@@ -12,8 +12,8 @@
 #mainNav .navbar-toggler {
   font-size: 80%;
   padding: 0.75rem;
-  color: #64a19d;
-  border: 1px solid #64a19d;
+  color: #1bce7c;
+  border: 1px solid #1bce7c;
 }
 
 #mainNav .navbar-toggler:focus {
@@ -72,15 +72,15 @@
     border-bottom: 0.25rem solid transparent;
   }
   #mainNav.navbar-shrink .nav-link:hover {
-    color: #64a19d;
+    color: #1bce7c;
   }
   #mainNav.navbar-shrink .nav-link:active {
-    color: #467370;
+    color: #128a53;
   }
   #mainNav.navbar-shrink .nav-link.active {
-    color: #64a19d;
+    color: #1bce7c;
     outline: none;
-    border-bottom: 0.25rem solid #64a19d;
+    border-bottom: 0.25rem solid #1bce7c;
   }
 }
 
@@ -146,20 +146,20 @@
 }
 
 .btn-primary {
-  background-color: #64a19d;
+  background-color: #1bce7c;
 }
 
 .btn-primary:hover {
-  background-color: #4f837f;
+  background-color: #15a161;
 }
 
 .btn-primary:focus {
-  background-color: #4f837f;
+  background-color: #15a161;
   color: white;
 }
 
 .btn-primary:active {
-  background-color: #467370 !important;
+  background-color: #128a53 !important;
 }
 
 .about-section {
@@ -182,7 +182,7 @@
 @media (min-width: 992px) {
   .projects-section .featured-text {
     padding: 0 0 0 2rem;
-    border-left: 0.5rem solid #64a19d;
+    border-left: 0.5rem solid #1bce7c;
   }
 }
 
@@ -196,7 +196,7 @@
     padding: 5rem;
   }
   .projects-section .project-text hr {
-    border-color: #64a19d;
+    border-color: #1bce7c;
     border-width: .25rem;
     width: 30%;
   }
@@ -228,7 +228,7 @@
 
 .contact-section .card {
   border: 0;
-  border-bottom: 0.25rem solid #64a19d;
+  border-bottom: 0.25rem solid #1bce7c;
 }
 
 .contact-section .card h4 {
@@ -239,7 +239,7 @@
 }
 
 .contact-section .card hr {
-  border-color: #64a19d;
+  border-color: #1bce7c;
   border-width: 0.25rem;
   width: 3rem;
 }
@@ -272,12 +272,12 @@ body {
 }
 
 a {
-  color: #64a19d;
+  color: #1bce7c;
 }
 
 a:focus, a:hover {
   text-decoration: none;
-  color: #3c6360;
+  color: #0f7446;
 }
 
 .bg-black {
@@ -285,11 +285,11 @@ a:focus, a:hover {
 }
 
 .bg-primary {
-  background-color: #64a19d !important;
+  background-color: #1bce7c !important;
 }
 
 .text-primary {
-  color: #64a19d !important;
+  color: #1bce7c !important;
 }
 
 footer {
