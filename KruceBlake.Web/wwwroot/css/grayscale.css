@@ -201,6 +201,67 @@
   }
 }
 
+.projects-section .project-main {
+  -webkit-filter: grayscale(1);
+  filter: grayscale(1);
+}
+
+.projects-section .project-1 {
+  background-image: url(/images/project-1.jpg);
+  background-size: cover;
+  -webkit-filter: grayscale(1);
+  filter: grayscale(1);
+}
+
+.projects-section .project-2 {
+  background-image: url(/images/project-2.jpg);
+  background-size: cover;
+  -webkit-filter: grayscale(1);
+  filter: grayscale(1);
+}
+
+.projects-section .project-3 {
+  background-image: url(/images/project-3.jpg);
+  background-size: cover;
+  -webkit-filter: grayscale(1);
+  filter: grayscale(1);
+}
+
+.projects-section .project-4 {
+  background-image: url(/images/project-4.jpg);
+  background-size: cover;
+  -webkit-filter: grayscale(1);
+  filter: grayscale(1);
+}
+
+.projects-section .project-5 {
+  background-image: url(/images/project-5.jpg);
+  background-size: cover;
+  -webkit-filter: grayscale(1);
+  filter: grayscale(1);
+}
+
+.projects-section .project-6 {
+  background-image: url(/images/project-6.jpg);
+  background-size: cover;
+  -webkit-filter: grayscale(1);
+  filter: grayscale(1);
+}
+
+.projects-section .project-7 {
+  background-image: url(/images/project-7.jpg);
+  background-size: cover;
+  -webkit-filter: grayscale(1);
+  filter: grayscale(1);
+}
+
+.projects-section .project-8 {
+  background-image: url(/images/project-8.jpg);
+  background-size: cover;
+  -webkit-filter: grayscale(1);
+  filter: grayscale(1);
+}
+
 .signup-section {
   padding: 10rem 0;
   background: linear-gradient(to bottom, rgba(22, 22, 22, 0.1) 0%, rgba(22, 22, 22, 0.5) 75%, #161616 100%), url("../images/andromeda_galaxy_bottom.jpg");

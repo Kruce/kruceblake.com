@@ -1,22 +1,79 @@
 .projects-section {
-  padding: 10rem 0;
-  .featured-text {
-    padding: 2rem;
-    @media (min-width: 992px) {
-      padding: 0 0 0 2rem;
-      border-left: 0.5rem solid $primary;
+    padding: 10rem 0;
+
+    .featured-text {
+        padding: 2rem;
+
+        @media (min-width: 992px) {
+            padding: 0 0 0 2rem;
+            border-left: 0.5rem solid $primary;
+        }
     }
-  }
-  .project-text {
-    padding: 3rem;
-    font-size: 90%;
-    @media (min-width: 992px) {
-      padding: 5rem;
-      hr {
-        border-color: $primary;
-        border-width: .25rem;
-        width: 30%;
-      }
+
+    .project-text {
+        padding: 3rem;
+        font-size: 90%;
+
+        @media (min-width: 992px) {
+            padding: 5rem;
+
+            hr {
+                border-color: $primary;
+                border-width: .25rem;
+                width: 30%;
+            }
+        }
     }
-  }
+
+    .project-main {
+        filter: grayscale(1);
+    }
+
+    .project-1 {
+        background-image: url(/images/project-1.jpg);
+        background-size: cover;
+        filter: grayscale(1);
+    }
+
+    .project-2 {
+        background-image: url(/images/project-2.jpg);
+        background-size: cover;
+        filter: grayscale(1);
+    }
+
+    .project-3 {
+        background-image: url(/images/project-3.jpg);
+        background-size: cover;
+        filter: grayscale(1);
+    }
+
+    .project-4 {
+        background-image: url(/images/project-4.jpg);
+        background-size: cover;
+        filter: grayscale(1);
+    }
+
+    .project-5 {
+        background-image: url(/images/project-5.jpg);
+        background-size: cover;
+        filter: grayscale(1);
+    }
+
+    .project-6 {
+        background-image: url(/images/project-6.jpg);
+        background-size: cover;
+        filter: grayscale(1);
+    }
+
+    .project-7 {
+        background-image: url(/images/project-7.jpg);
+        background-size: cover;
+        filter: grayscale(1);
+    }
+
+    .project-8 {
+        background-image: url(/images/project-8.jpg);
+        background-size: cover;
+        filter: grayscale(1);
+    }
 }
