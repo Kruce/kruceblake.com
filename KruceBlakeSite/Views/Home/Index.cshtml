@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IndexViewModel
+@{
     ViewData["Title"] = "home";
 }
 <!--About Section-->
@@ -8,7 +9,7 @@
             <div class="col-lg-8 mx-auto">
                 <h2 class="text-white mb-4">hello world.</h2>
                 <p class="text-white-50">
-                    My name is Kruce Blake and I have been a developer professionally since 2011. It is something that I am very passionate about and love to do. I am currently doing extensive work in .Net Core. If you would like to see more, please <a href="~/images/Blake, Kruce Resume.pdf">download my resume</a> or continue below to see a few examples of my previous work.
+                    My name is Kruce Blake and I have been a developer professionally since 2011. It is something that I am very passionate about and love to do. I am currently working mainly within the .Net Core framework. This site was built by me and is currently targetting <i>@(Model.CurrentFramework)</i>. If you would like to see more, please <a href="~/images/Blake, Kruce Resume.pdf">download my resume</a> or continue below to see a few examples of my previous work.
                 </p>
             </div>
         </div>
@@ -102,23 +103,22 @@
         </div>
     </div>
 </section>
-<!-- Blank Sign-Up Section -->
-<section id="sign-up" class="signup-section">
+<!-- Contact Section -->
+<section id="contact" class="signup-section">
     <div class="container">
         <div class="row">
             @*<div class="col-md-10 col-lg-8 mx-auto text-center">
-                <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
-                <h2 class="text-white mb-5">Subscribe to receive updates!</h2>
-                <form class="form-inline d-flex">
-                    <input type="email" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail" placeholder="Enter email address...">
-                    <button type="submit" class="btn btn-primary mx-auto">Subscribe</button>
-                </form>
-            </div>*@
+                    <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
+                    <h2 class="text-white mb-5">Subscribe to receive updates!</h2>
+                    <form class="form-inline d-flex">
+                        <input type="email" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail" placeholder="Enter email address...">
+                        <button type="submit" class="btn btn-primary mx-auto">Subscribe</button>
+                    </form>
+                </div>*@
         </div>
     </div>
 </section>
-<!-- Contact Section -->
-<section id="contact" class="contact-section bg-black">
+<section id="contact-info" class="contact-section bg-black">
     <div class="container">
         <div class="row">
             <div class="col-md-4 mb-3 mb-md-0">

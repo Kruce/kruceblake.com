@@ -279,8 +279,8 @@ THE SOFTWARE.
 })(this);
 
 cheet(`↑ ↑ ↓ ↓ ← → ← → b a`, function () {
-    var img = $(`#Konami`);
+    var img = $(`#Egg`);
     img.prop(`src`, `/images/konami.gif`);
-    setTimeout(function () { $(`#konami-box`).slideDown(`slow`).delay(2200).slideUp(`slow`); }, 300);
+    setTimeout(function () { $(`#egg-box`).slideDown(`slow`).delay(2200).slideUp(`slow`); }, 300);
     setTimeout(function () { img.prop(`src`, ``); }, 3700);
 });
