@@ -1,13 +1,10 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using KruceBlakeSite.Models;
+using KruceBlake.Web.Models;
 using Microsoft.AspNetCore.Authorization;
-using System.Reflection;
-using System.Linq;
-using System.Runtime.Versioning;
 
-namespace KruceBlakeSite.Controllers
+namespace KruceBlake.Web.Controllers
 {
     public class HomeController : BaseController<HomeController>
     {

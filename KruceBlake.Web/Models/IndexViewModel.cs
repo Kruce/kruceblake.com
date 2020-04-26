@@ -2,7 +2,7 @@
 using System.Reflection;
 using System.Runtime.Versioning;
 
-namespace KruceBlakeSite.Models
+namespace KruceBlake.Web.Models
 {
     public class IndexViewModel
     {

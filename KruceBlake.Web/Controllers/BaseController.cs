@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace KruceBlakeSite.Controllers
+namespace KruceBlake.Web.Controllers
 {
     /// <summary>
     /// All controllers should inherit from this to use logger. Gets service as a property instead using httpcontext

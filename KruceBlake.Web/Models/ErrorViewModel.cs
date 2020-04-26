@@ -1,6 +1,6 @@
 using System;
 
-namespace KruceBlakeSite.Models
+namespace KruceBlake.Web.Models
 {
     public class ErrorViewModel
     {
