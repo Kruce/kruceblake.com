@@ -3,6 +3,10 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="wwwroot\.well-known\security.txt" />
+  </ItemGroup>
   <ItemGroup>
     <Content Update="wwwroot\scss\**\*.*" CopyToPublishDirectory="Never" />
   </ItemGroup>
