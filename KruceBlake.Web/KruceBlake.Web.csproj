@@ -4,6 +4,6 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="wwwroot\scss\**\*" CopyToPublishDirectory="Never" />
+    <Content Update="wwwroot\scss\**\*.*" CopyToPublishDirectory="Never" />
   </ItemGroup>
 </Project>
