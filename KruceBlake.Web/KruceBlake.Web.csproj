@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="wwwroot\.well-known\keybase.txt" />
     <Content Include="wwwroot\.well-known\security.txt" />
   </ItemGroup>
   <ItemGroup>

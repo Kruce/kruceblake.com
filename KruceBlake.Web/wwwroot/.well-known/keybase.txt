@@ -1,0 +1,68 @@
+==================================================================
+https://keybase.io/kruce
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://kruceblake.com
+  * I am kruce (https://keybase.io/kruce) on keybase.
+  * I have a public key with fingerprint 15EE 869D 7900 70CB 2838  4E1C 0383 6E47 1A4E 31D1
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0101cc72fdbfec6b975af783e2ed15f5f9f3ccaa7624a620358658b51847b34a451e0a",
+      "fingerprint": "15ee869d790070cb28384e1c03836e471a4e31d1",
+      "host": "keybase.io",
+      "key_id": "03836e471a4e31d1",
+      "kid": "0101cc72fdbfec6b975af783e2ed15f5f9f3ccaa7624a620358658b51847b34a451e0a",
+      "uid": "d59548f23002531c17e1067d22650419",
+      "username": "kruce"
+    },
+    "service": {
+      "hostname": "kruceblake.com",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1587959368,
+  "expire_in": 157680000,
+  "prev": "0f0d94017106491a6345745381a82e740c8076762e80630bf321ae6979399649",
+  "seqno": 3,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.1.13
+Comment: https://keybase.io/crypto
+
+yMInAnicrVJbSFRBGF61m2tCQkRUWB0xtWybOXPmcrYLBlGmkkRhF8zlXOboSduz
+nt3VDTPo8lIUGZEvFiWRmiUVCfWQZiY9GKWQYdRL2P2hgiC60G2OFQS9Ni8z8//f
+9833f8xAeorPn/Rk/ouuHy67l3TnZnPcV9FWVtgg6Y65Uwo2SNV8fOM1Jo/GQtW2
+KQUlAAE0DCpbpm5xg+gqxZpFGeIyNyG2sKVayDA0jRJZ0YgMEGYEMx1DplAdKZqC
+IQealC9ZdriSuxHXDseELMScM6KaVAWAAkOXGWIKhwZADBGuUKgpHEETCmKVE/UY
+wpyuRXnAdkRNXEK/7P2L/8++4+NyJlaxwiwZASBjBA1IOQSEmrJMMFCg6gGj3A1r
+O7jn1Y0bXGrMl0SpzhZHkao3xt9tvUar5gHD2SGoEdeJOYZTI3pVsVgkGvS4sZ0R
+D1zP9dBvmZBuh00Ro2DUcTdqO2EpCAXSiNmeLsSMqlhFhOVLPBGxXR6yPQSmhAGx
+vHd4nZeNBUxVAZCKERQVagQpmCoYMagxmVMFGAxQIpLhDBAEdAvJUONEpSpSVcGQ
+vMFqw44URMKmVikko3ZlWIvFXTF1f1/5BF+S3zdpYrL3vXz+1Gl/Pt2+psk/EtOf
+GtfKCm6cKOxZNrt1ODejfqz3Yv6zWSNLYTCnBI+9O/Bh0+asSyO17WbTw8WXc82B
+wSnH7hyd+qC0KLzKvrWxL/M2XFF7al5q3vO0iispH0eWaznrDy9/25L7adarhUOt
+LesSk0aLTxecLyK+zjVdeV9OZxdfXP3u/dlEfCvJeboyWNzz2vlmNXVs734ebX/Z
+fCjjYPaR/jb/8LzM9BmjMwbzTuw/tzJlVWDv4wlDXxd9fnS3a8MiJzGtJXNpwb2S
+ouPJu6zElrSxJTBjRe/COckPruMLTZ9rtmVf/h7YndVyZkHW6NzSqycbZ5Z31892
+m9/cWnB/zycy2NE58ra/tbd87XTwE98AOI4=
+=dZRN
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/kruce
+
+==================================================================
