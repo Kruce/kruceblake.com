@@ -3,13 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
-
   <ItemGroup>
-    <Content Include="gulpfile.js" />
+    <None Include="wwwroot\scss\**\*" CopyToPublishDirectory="Never" />
   </ItemGroup>
-  
-  <ItemGroup>
-    <Folder Include="wwwroot\lib\" />
-  </ItemGroup>
-
 </Project>

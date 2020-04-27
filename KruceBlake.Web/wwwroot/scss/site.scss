@@ -1,0 +1,44 @@
+﻿@import "grayscale/variables";
+@import "grayscale/mixins";
+@import "grayscale/navbar";
+@import "grayscale/masthead";
+@import "grayscale/buttons";
+@import "grayscale/about";
+@import "grayscale/projects";
+@import "grayscale/signup";
+@import "grayscale/contact";
+@import "kruceblake/cheet";
+@import "kruceblake/error";
+@import "kruceblake/scrolldown";
+@import "kruceblake/typewriter";
+
+body {
+    font-family: 'Nunito';
+    letter-spacing: 0.0625em;
+}
+
+a {
+    color: $primary;
+
+    &:focus,
+    &:hover {
+        text-decoration: none;
+        color: darken($primary, 20%);
+    }
+}
+
+.bg-black {
+    background-color: $black !important;
+}
+
+.bg-primary {
+    background-color: $primary !important;
+}
+
+.text-primary {
+    color: $primary !important;
+}
+
+footer {
+    padding: 5rem 0;
+}

@@ -6,16 +6,18 @@
     <meta name="description" content="Kruce Blake - programmer, application developer, software engineer.">
 
     <title>@ViewData["Title"] - kruce blake</title>
-    <!-- Bootstrap core CSS -->
-    <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <!-- Custom fonts for this template -->
-    <link href="~/lib/fontawesome-free/css/all.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
-    <!-- Custom styles for this template -->
-    <link href="~/lib/aos/aos.css" rel="stylesheet" />
-    <link href="~/css/grayscale.min.css" rel="stylesheet" />
-    <link href="~/css/site.min.css" rel="stylesheet" />
+    <environment include="Development">
+        <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+        <link href="~/lib/fontawesome-free/css/all.css" rel="stylesheet" />
+        <link href="~/css/site.css" rel="stylesheet" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" integrity="sha384-0c38nfCMzF8w8DBI+9nTWzApOpr1z0WuyswL4y6x/2ZTtmj/Ki5TedKeUcFusC/k" crossorigin="anonymous" asp-fallback-href="~/lib/fontawesome-free/css/all.min.css">
+        <link rel="stylesheet" href="~/css/site.min.css"/>
+    </environment>
 </head>
 <body id="page-top">
     <!-- Navigation -->
@@ -64,17 +66,23 @@
             kruceblake.com &copy; @DateTime.Now.Year
         </div>
     </footer>
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="~/lib/jquery/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- Plugin JavaScript -->
-    <script src="~/lib/jquery-easing/jquery.easing.min.js"></script>
-    <!-- Custom scripts for this template -->
-    <script src="~/js/grayscale.min.js"></script>
+    <environment include="Development">
+        <script src="~/lib/jquery/jquery.js"></script>
+        <script src="~/lib/bootstrap/js/bootstrap.bundle.js"></script>
+        <script src="~/lib/jquery-easing/jquery.easing.js"></script>
+        <script src="~/js/grayscale.js"></script>
+        <script src="~/js/typewriter.js"></script>
+        <script src="~/js/cheet.js"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha384-vk5WoKIaW/vJyUAd9n/wmopsmNhiy+L2Z+SBxGYnUkunIxVxAv/UtMOhba/xskxh" crossorigin="anonymous" asp-fallback-src="~/lib/jquery/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous" asp-fallback-src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js" integrity="sha384-leGYpHE9Tc4N9OwRd98xg6YFpB9shlc/RkilpFi0ljr3QD4tFoFptZvgnnzzwG4Q" crossorigin="anonymous" asp-fallback-src="~/lib/jquery-easing/jquery.easing.min.js"></script>
+        <script src="~/js/grayscale.min.js"></script>
+        <script src="~/js/typewriter.min.js"></script>
+        <script src="~/js/cheet.min.js"></script>
+    </environment>
     <script src="~/lib/aos/aos.js"></script>
-    <script src="~/js/typewriter.min.js"></script>
-    <script src="~/js/cheet.min.js"></script>
     <script>AOS.init();</script> @*initialize animate on scroll*@
     @RenderSection("Scripts", required: false)
 </body>

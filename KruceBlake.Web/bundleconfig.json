@@ -1,0 +1,35 @@
+[
+  {
+    "outputFileName": "wwwroot/js/cheet.min.js",
+    "inputFiles": [
+      "wwwroot/js/cheet.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/js/grayscale.min.js",
+    "inputFiles": [
+      "wwwroot/js/grayscale.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/js/typewriter.min.js",
+    "inputFiles": [
+      "wwwroot/js/typewriter.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  }
+]
