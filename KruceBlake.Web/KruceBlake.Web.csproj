@@ -8,6 +8,11 @@
     <Content Include="wwwroot\.well-known\keybase.txt" />
     <Content Include="wwwroot\.well-known\security.txt" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\.well-known\**\*.*" CopyToPublishDirectory="Always" />
+  </ItemGroup>
+  
   <ItemGroup>
     <Content Update="wwwroot\scss\**\*.*" CopyToPublishDirectory="Never" />
   </ItemGroup>
