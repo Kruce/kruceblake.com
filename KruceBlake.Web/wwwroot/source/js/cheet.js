@@ -280,7 +280,7 @@ THE SOFTWARE.
 
 cheet(`↑ ↑ ↓ ↓ ← → ← → b a`, function () {
     var img = $(`#Egg`);
-    img.prop(`src`, `/images/konami.gif`);
+    img.prop(`src`, `/dist/images/konami.gif`);
     setTimeout(function () { $(`#egg-box`).slideDown(`slow`).delay(2200).slideUp(`slow`); }, 300);
     setTimeout(function () { img.prop(`src`, ``); }, 3700);
 });

@@ -55,8 +55,8 @@ gulp.task(`min:css`, async function () {
         .pipe(gulp.dest(`${distPath}/css`));
 });
 
-///clears lib folder and redownloads all necessary modules
-gulp.task(`modules`, async function () {
+///downloads all necessary modules
+gulp.task(`modules:install`, async function () {
     // Bootstrap
     var bootstrap = gulp.src(`./node_modules/bootstrap/dist/**/*`).pipe(gulp.dest(`${distPath}/lib/bootstrap`));
     // Font Awesome CSS
@@ -74,8 +74,13 @@ gulp.task(`modules`, async function () {
     // jQuery validation
     var jqueryValidation = gulp.src([`./node_modules/jquery-validation/dist/*`, `!./node_modules/jquery-validation/dist/localization`]).pipe(gulp.dest(`${distPath}/lib/jquery-validation`));
 
-    merge(del([`${distPath}/lib/`]), bootstrap, fontAwesomeCSS, fontAwesomeWebfonts, jqueryEasing, jquery, aos, jqueryValidationUnobtrusive, jqueryValidation);
+    return merge(bootstrap, fontAwesomeCSS, fontAwesomeWebfonts, jqueryEasing, jquery, aos, jqueryValidationUnobtrusive, jqueryValidation);
 });
+
+//cleans modules folder
+gulp.task(`modules:clean`, async function () {
+    return del([`${distPath}/lib/`]);
+})
 
 ///minifies sass, css and javascript
 gulp.task(`min`, gulp.series([`min:js`, `min:sass`, `min:css`]));

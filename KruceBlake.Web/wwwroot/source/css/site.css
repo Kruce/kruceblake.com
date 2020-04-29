@@ -207,56 +207,56 @@
 }
 
 .projects-section .project-1 {
-  background-image: url(/images/project-1.jpg);
+  background-image: url(/dist/images/project-1.jpg);
   background-size: cover;
   -webkit-filter: grayscale(70%);
   filter: grayscale(70%);
 }
 
 .projects-section .project-2 {
-  background-image: url(/images/project-2.jpg);
+  background-image: url(/dist/images/project-2.jpg);
   background-size: cover;
   -webkit-filter: grayscale(70%);
   filter: grayscale(70%);
 }
 
 .projects-section .project-3 {
-  background-image: url(/images/project-3.jpg);
+  background-image: url(/dist/images/project-3.jpg);
   background-size: cover;
   -webkit-filter: grayscale(70%);
   filter: grayscale(70%);
 }
 
 .projects-section .project-4 {
-  background-image: url(/images/project-4.jpg);
+  background-image: url(/dist/images/project-4.jpg);
   background-size: cover;
   -webkit-filter: grayscale(70%);
   filter: grayscale(70%);
 }
 
 .projects-section .project-5 {
-  background-image: url(/images/project-9.jpg);
+  background-image: url(/dist/images/project-9.jpg);
   background-size: cover;
   -webkit-filter: grayscale(70%);
   filter: grayscale(70%);
 }
 
 .projects-section .project-6 {
-  background-image: url(/images/project-6.jpg);
+  background-image: url(/dist/images/project-6.jpg);
   background-size: cover;
   -webkit-filter: grayscale(70%);
   filter: grayscale(70%);
 }
 
 .projects-section .project-7 {
-  background-image: url(/images/project-7.jpg);
+  background-image: url(/dist/images/project-7.jpg);
   background-size: cover;
   -webkit-filter: grayscale(70%);
   filter: grayscale(70%);
 }
 
 .projects-section .project-8 {
-  background-image: url(/images/project-8.jpg);
+  background-image: url(/dist/images/project-8.jpg);
   background-size: cover;
   -webkit-filter: grayscale(70%);
   filter: grayscale(70%);
