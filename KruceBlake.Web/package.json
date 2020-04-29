@@ -1,7 +1,7 @@
 {
   "title": "kruceblake.com",
   "version": "1.0.0",
-  "name": "asp.net",
+  "name": "kruce-blake-site",
   "private": true,
   "homepage": "http://www.kruceblake.com/",
   "bugs": {
@@ -29,7 +29,6 @@
     "gulp-cssmin": "^0.2.0",
     "gulp-header": "2.0.9",
     "gulp-plumber": "^1.2.1",
-    "gulp-rename": "1.4.0",
     "gulp-sass": "4.0.2",
     "gulp-uglify-es": "2.0.0",
     "merge-stream": "2.0.0",

@@ -7,13 +7,14 @@
   <ItemGroup>
     <Content Include="wwwroot\.well-known\keybase.txt" />
     <Content Include="wwwroot\.well-known\security.txt" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Update="wwwroot\.well-known\**\*.*" CopyToPublishDirectory="Always" />
   </ItemGroup>
   
   <ItemGroup>
-    <Content Update="wwwroot\scss\**\*.*" CopyToPublishDirectory="Never" />
+    <Folder Include="wwwroot\dist\js\" />
+    <Folder Include="wwwroot\dist\css\" />
+    <Content Update="wwwroot\dist\**\*.*" CopyToPublishDirectory="Always" />
+    <Folder Include="wwwroot\source\css\" />
+    <Content Update="wwwroot\source\**\*.*" CopyToPublishDirectory="Never" />
   </ItemGroup>
 </Project>
