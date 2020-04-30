@@ -20,7 +20,7 @@ const autoprefixer = require(`gulp-autoprefixer`),
         `\n`
     ].join(``);
 
-///minifies javascript
+///bundles and minifies javascript
 gulp.task(`min:js`, async function () {
     return gulp.src([`${sourcePath}/js/**/*.js`, `!${sourcePath}/js/**/*.min.js`])
         .pipe(concat(`site.min.js`, { newLine: `` }))
@@ -47,7 +47,7 @@ gulp.task(`min:sass`, function () { //leaving this task synchronus for the serie
         .pipe(gulp.dest(`${sourcePath}/css`));
 });
 
-///minifies javascript
+///bundles and minifies css
 gulp.task(`min:css`, async function () {
     return gulp.src([`${sourcePath}/css/**/*.css`, `!${sourcePath}/css/**/*.min.css`])
         .pipe(concat(`site.min.css`, { newLine: `` }))
@@ -82,7 +82,7 @@ gulp.task(`modules:clean`, async function () {
     return del([`${distPath}/lib/`]);
 })
 
-///minifies sass, css and javascript
+///bundles and minifies sass, css and javascript
 gulp.task(`min`, gulp.series([`min:js`, `min:sass`, `min:css`]));
 
 ///watches files and runs task if changes occur
@@ -91,5 +91,5 @@ gulp.task(`watch`, () => {
     gulp.watch([`${sourcePath}/scss/**/*`, `${sourcePath}/css/**/*.css`, `!${sourcePath}/js/**/*.min.css`,], gulp.series([`min:sass`, `min:css`]));
 });
 
-//default task that installs modules and minifies files
+//default task that bundles and minifies files
 gulp.task(`default`, gulp.series(`min`));
