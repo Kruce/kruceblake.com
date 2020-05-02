@@ -109,7 +109,7 @@
                 asp-fallback-src="~/dist/lib/aos/aos.js"
                 asp-fallback-test="window.AOS"
                 asp-suppress-fallback-integrity="true"></script>
-        <script src="~/dist/js/site.min.js"></script>
+        <script src="~/dist/js/site.min.js" asp-append-version="true"></script>
     </environment>
     <script>AOS.init();</script> @*initialize animate on scroll*@
     @RenderSection("Scripts", required: false)
