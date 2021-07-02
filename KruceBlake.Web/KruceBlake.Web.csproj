@@ -15,6 +15,7 @@
     <Folder Include="wwwroot\dist\css\" />
     <Content Update="wwwroot\dist\**\*.*" CopyToPublishDirectory="Always" />
     <Folder Include="wwwroot\source\css\" />
+    <PackageReference Include="Google.Apis.Analytics.v3" Version="1.52.0.1679" />
     <Content Update="wwwroot\source\**\*.*" CopyToPublishDirectory="Never" />
   </ItemGroup>
 </Project>
