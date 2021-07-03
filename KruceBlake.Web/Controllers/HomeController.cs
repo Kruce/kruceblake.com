@@ -14,8 +14,7 @@ namespace KruceBlake.Web.Controllers
 
         public IActionResult Index()
         {
-            var model = new IndexViewModel();
-            return View(model);
+            return View(new IndexViewModel());
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

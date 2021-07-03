@@ -19,15 +19,9 @@ namespace KruceBlake.Web
         public IConfiguration Configuration { get; }
         public IWebHostEnvironment Env { get; set; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //if (Env.IsDevelopment())
-            //{
-            //    builder.AddRazorRuntimeCompilation();
-            //}
-            IMvcBuilder builder = services.AddControllersWithViews();
-
+            services.AddControllersWithViews();
             services.Configure<GoogleAnalyticsOptions>(options => Configuration.GetSection("GoogleAnalytics").Bind(options));
             services.AddTransient<ITagHelperComponent, GoogleAnalyticsTagHelperComponent>();
         }
@@ -43,16 +37,12 @@ namespace KruceBlake.Web
             {
                 app.UseExceptionHandler("/Home/Error");
                 app.UseStatusCodePagesWithReExecute("/Error/{0}");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
             app.UseRouting();
-
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
