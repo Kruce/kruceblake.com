@@ -279,6 +279,10 @@ THE SOFTWARE.
 })(this);
 
 cheet(`↑ ↑ ↓ ↓ ← → ← → b a`, function () {
+    gtag(`event`, `success`, {
+        'event_category' : `fun`,
+        'event_label' : `konami`
+    });
     var img = $(`#Egg`);
     img.prop(`src`, `/dist/images/konami.gif`);
     setTimeout(function () { $(`#egg-box`).slideDown(`slow`).delay(2200).slideUp(`slow`); }, 300);
