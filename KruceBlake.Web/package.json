@@ -18,7 +18,7 @@
     "bootstrap": "4.3.1",
     "jquery": "3.5.1",
     "jquery.easing": "^1.4.1",
-    "jquery-validation": "1.19.1",
+    "jquery-validation": "1.19.4",
     "jquery-validation-unobtrusive": "3.2.11"
   },
   "devDependencies": {
