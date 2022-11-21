@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30011.22
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KruceBlake.Web", "KruceBlake.Web\KruceBlake.Web.csproj", "{FCB55749-D711-436B-B8F1-A0A54A4BBF8A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KruceBlake.Api", "KruceBlake.Api\KruceBlake.Api.csproj", "{EA6C3CF0-6622-42DD-BA48-D97722D620DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{FCB55749-D711-436B-B8F1-A0A54A4BBF8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FCB55749-D711-436B-B8F1-A0A54A4BBF8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FCB55749-D711-436B-B8F1-A0A54A4BBF8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA6C3CF0-6622-42DD-BA48-D97722D620DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA6C3CF0-6622-42DD-BA48-D97722D620DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA6C3CF0-6622-42DD-BA48-D97722D620DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA6C3CF0-6622-42DD-BA48-D97722D620DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

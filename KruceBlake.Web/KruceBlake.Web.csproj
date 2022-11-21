@@ -5,8 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="wwwroot\.well-known\keybase.txt" />
-    <Content Include="wwwroot\.well-known\security.txt" />
     <Content Update="wwwroot\.well-known\**\*.*" CopyToPublishDirectory="Always" />
   </ItemGroup>
   
