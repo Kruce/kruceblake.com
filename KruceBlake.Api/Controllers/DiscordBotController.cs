@@ -1,10 +1,12 @@
 ﻿using KruceBlake.Api.Attributes;
 using KruceBlake.Api.Utilities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using Newtonsoft.Json.Linq;
 
 namespace KruceBlake.Api.Controllers
 {
+    [EnableRateLimiting("Api")]
     [Route("[controller]/[action]")]
     [ApiController]
     public class DiscordBotController : ControllerBase
@@ -18,7 +20,7 @@ namespace KruceBlake.Api.Controllers
         [HttpGet]
         public IActionResult GetBookmarks()
         {
-            return ReadJson("bookmarks.json");
+            return GetJson("bookmarks.json");
         }
         [ApiKey]
         [HttpPut]
@@ -29,7 +31,7 @@ namespace KruceBlake.Api.Controllers
         [HttpGet]
         public IActionResult GetReminders()
         {
-            return ReadJson("reminders.json");
+            return GetJson("reminders.json");
         }
         [ApiKey]
         [HttpPut]
@@ -37,10 +39,9 @@ namespace KruceBlake.Api.Controllers
         {
             return UpdateJson("reminders.json", json);
         }
-        private IActionResult ReadJson(string fileName)
+        private IActionResult GetJson(string fileName)
         {
-            var rootPath = _webHostEnvironment.ContentRootPath;
-            var fullPath = Path.Combine(rootPath, $"data\\{fileName}");
+            var fullPath = Path.Combine(_webHostEnvironment.ContentRootPath, $"data\\{fileName}");
             if (!Path.Exists(fullPath))
             {
                 return NotFound();
@@ -50,8 +51,7 @@ namespace KruceBlake.Api.Controllers
         }
         private IActionResult UpdateJson(string fileName, JObject json)
         {
-            var rootPath = _webHostEnvironment.ContentRootPath;
-            var fullPath = Path.Combine(rootPath, $"data\\{fileName}");
+            var fullPath = Path.Combine(_webHostEnvironment.ContentRootPath, $"data\\{fileName}");
             if (!Path.Exists(fullPath))
             {
                 return NotFound();
