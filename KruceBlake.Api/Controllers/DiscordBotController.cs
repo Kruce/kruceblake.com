@@ -39,6 +39,17 @@ namespace KruceBlake.Api.Controllers
         {
             return UpdateJson("reminders.json", json);
         }
+        [HttpGet]
+        public IActionResult GetCountdowns()
+        {
+            return GetJson("countdowns.json");
+        }
+        [ApiKey]
+        [HttpPut]
+        public IActionResult PutCountdowns([FromBody] JObject json)
+        {
+            return UpdateJson("countdowns.json", json);
+        }
         private IActionResult GetJson(string fileName)
         {
             var fullPath = Path.Combine(_webHostEnvironment.ContentRootPath, $"data\\{fileName}");
