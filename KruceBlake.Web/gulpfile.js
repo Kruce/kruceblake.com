@@ -10,7 +10,7 @@ const autoprefixer = require(`gulp-autoprefixer`),
     header = require(`gulp-header`),
     merge = require(`merge-stream`),
     plumber = require(`gulp-plumber`),
-    sass = require(`gulp-sass`),
+    sass = require(`gulp-sass`)(require(`sass`)),
     uglify = require(`gulp-uglify-es`).default,
     pkg = require(`./package.json`), // Load package.json for banner
     banner = [`/*!\n`, // Set the banner content
@@ -29,7 +29,7 @@ gulp.task(`min:js`, async function () {
 });
 
 ///compiles sass
-gulp.task(`min:sass`, function () { //leaving this task synchronus for the series where we need this to finish before minifying css.
+gulp.task(`min:sass`, async function () {
     return gulp
         .src(`${sourcePath}/scss/**/*.scss`)
         .pipe(plumber())

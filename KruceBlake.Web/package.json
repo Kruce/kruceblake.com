@@ -17,21 +17,22 @@
     "aos": "2.3.4",
     "bootstrap": "4.3.1",
     "jquery": "3.5.1",
-    "jquery.easing": "^1.4.1",
     "jquery-validation": "1.19.1",
-    "jquery-validation-unobtrusive": "3.2.11"
+    "jquery-validation-unobtrusive": "3.2.11",
+    "jquery.easing": "^1.4.1",
+    "sass": "^1.83.1"
   },
   "devDependencies": {
     "browser-sync": "2.26.7",
     "del": "5.1.0",
     "gulp": "4.0.2",
     "gulp-autoprefixer": "7.0.0",
+    "gulp-concat": "^2.6.1",
     "gulp-cssmin": "^0.2.0",
     "gulp-header": "2.0.9",
     "gulp-plumber": "^1.2.1",
-    "gulp-sass": "4.0.2",
-    "gulp-uglify-es": "2.0.0",
-    "merge-stream": "2.0.0",
-    "gulp-concat": "^2.6.1"
+    "gulp-sass": "6.0.0",
+    "gulp-uglify-es": "3.0.0",
+    "merge-stream": "2.0.0"
   }
 }
