@@ -34,7 +34,7 @@
     -webkit-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
     transform: translateX(-50%);
-    background: url('/dist/images/andromeda_galaxy.jpg') no-repeat;
+    background: url('/dist/images/stars_full.png') no-repeat;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-size: cover;
@@ -64,14 +64,14 @@
     font-size: 14px;
     text-decoration: none;
     text-transform: lowercase;
-    background: #1bce7c;
+    background: $primary-error;
     display: inline-block;
     padding: 15px 30px;
     border-radius: 40px;
     color: #fff;
     font-weight: 700;
-    -webkit-box-shadow: 0px 4px 15px -5px #1bce7c;
-    box-shadow: 0px 4px 15px -5px #1bce7c;
+    -webkit-box-shadow: 0px 4px 15px -5px $primary-error;
+    box-shadow: 0px 4px 15px -5px $primary-error;
 }
 
 @media only screen and (max-width: 767px) {
