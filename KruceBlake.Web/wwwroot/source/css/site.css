@@ -228,11 +228,16 @@
 
 .signup-section {
   padding: 10rem 0;
-  background: linear-gradient(to bottom, rgba(22, 22, 22, 0.1) 0%, rgba(22, 22, 22, 0.5) 75%, #161616 100%), url("/dist/images/stars_bottom.png");
-  background-position: center;
+  background: linear-gradient(to bottom, rgba(22, 22, 22, 0.1) 0%, rgba(22, 22, 22, 0.5) 75%, #161616 100%), url("/dist/images/stars_full.png");
+  background-position: bottom;
   background-repeat: no-repeat;
   background-attachment: scroll;
-  background-size: cover;
+  background-size: initial;
+}
+@media (min-width: 1920px) {
+  .signup-section {
+    background-size: cover;
+  }
 }
 .signup-section .form-inline input {
   box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;
