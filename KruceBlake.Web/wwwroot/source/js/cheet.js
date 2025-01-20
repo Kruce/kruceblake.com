@@ -279,9 +279,8 @@ THE SOFTWARE.
 })(this);
 
 cheet(`↑ ↑ ↓ ↓ ← → ← → b a`, function () {
-    gtag(`event`, `success`, {
-        'event_category' : `fun`,
-        'event_label' : `konami`
+    gtag(`event`, `activate_easter_egg`, {
+        'typed_konami' : `true`
     });
     var img = $(`#Egg`);
     img.prop(`src`, `/dist/images/konami.gif`);

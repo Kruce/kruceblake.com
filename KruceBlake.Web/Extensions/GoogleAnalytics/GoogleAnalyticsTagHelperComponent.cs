@@ -26,9 +26,9 @@ namespace KruceBlake.Web.Extensions
                     output.PostContent
                         .AppendHtml("<script async src='https://www.googletagmanager.com/gtag/js?id=")
                         .AppendHtml(trackingCode)
-                        .AppendHtml("'></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date);gtag('config','")
+                        .AppendHtml("'></script><script>window.dataLayer=window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config','")
                         .AppendHtml(trackingCode)
-                        .AppendHtml("',{displayFeaturesTask:'null'});</script>");
+                        .AppendHtml("');</script>");
                 }
             }
         }
