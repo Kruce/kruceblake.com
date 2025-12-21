@@ -1,5 +1,4 @@
-using KruceBlake.Api.Middleware;
-using Microsoft.AspNetCore.RateLimiting;
+using System.Net.Http.Headers;
 using System.Threading.RateLimiting;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,12 +11,12 @@ builder.Services.AddRateLimiter(options =>
         if (context.Lease.TryGetMetadata(MetadataName.RetryAfter, out var retryAfter))
         {
             await context.HttpContext.Response.WriteAsync(
-                $"Too many requests. Please try again after {retryAfter.TotalMinutes} minute(s). ", cancellationToken: token);
+                $"too many requests. please try again after {retryAfter.TotalMinutes} minute(s). ", cancellationToken: token);
         }
         else
         {
             await context.HttpContext.Response.WriteAsync(
-                "Too many requests. Please try again later.", cancellationToken: token);
+                "too many requests. please try again later.", cancellationToken: token);
         }
     };
     options.AddPolicy("Api", httpContext =>
@@ -28,6 +27,12 @@ builder.Services.AddRateLimiter(options =>
             PermitLimit = 20,
             Window = TimeSpan.FromMinutes(1)
         }));
+});
+
+builder.Services.AddHttpClient("CronJob", client =>
+{
+    client.BaseAddress = new Uri("https://api.cron-job.org/");
+    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", builder.Configuration["CronJobApiBearerToken"]);
 });
 builder.Services.AddControllers().AddNewtonsoftJson();
 builder.Services.AddEndpointsApiExplorer();

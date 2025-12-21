@@ -1,8 +1,10 @@
 ﻿using KruceBlake.Api.Attributes;
-using KruceBlake.Api.Utilities;
+using KruceBlake.Api.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.RateLimiting;
+using Microsoft.Net.Http.Headers;
 using Newtonsoft.Json.Linq;
+using MediaTypeHeaderValue = System.Net.Http.Headers.MediaTypeHeaderValue;
 
 namespace KruceBlake.Api.Controllers
 {
@@ -12,9 +14,91 @@ namespace KruceBlake.Api.Controllers
     public class DiscordBotController : ControllerBase
     {
         private readonly IWebHostEnvironment _webHostEnvironment;
-        public DiscordBotController(IWebHostEnvironment webHostEnvironment)
+        private readonly IHttpClientFactory _httpClientFactory;
+        public DiscordBotController(IWebHostEnvironment webHostEnvironment, IHttpClientFactory httpClientFactory)
         {
             _webHostEnvironment = webHostEnvironment;
+            _httpClientFactory = httpClientFactory;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Wake()
+        {
+            int attempt = 0;
+            int maxAttempts = 10;
+            bool isRunning = false;
+            HttpClient client;
+            HttpRequestMessage request;
+            HttpResponseMessage response;
+
+            //1. ping the bot to wake it up, or keep pinging a max of 10 times until it is awake
+            while (!isRunning && attempt < maxAttempts)
+            {
+                attempt++;
+                try
+                {
+                    client = _httpClientFactory.CreateClient();
+                    response = await client.GetAsync("https://discord-bot-kruceblake.koyeb.app/");
+                    isRunning = response.IsSuccessStatusCode;
+
+                    if (!isRunning)
+                        await Task.Delay(5000);
+                }
+                catch (Exception)
+                {
+                    return StatusCode(502, "there was an error pinging the bot service. please inform the administrator.");
+                }
+            }
+
+            if (!isRunning)
+            {
+                Response.Headers.Add(HeaderNames.RetryAfter, "120"); //2 mins
+                return StatusCode(503, $"bot was pinged {maxAttempts} times and is either still asleep or waking up. please retry in a couple minutes.");
+            }
+
+            //2. check if the cron-job service that automatically pings the bot is still enabled or not
+            bool isEnabled;
+            try
+            {
+                client = _httpClientFactory.CreateClient("CronJob");
+                response = await client.GetAsync("/jobs/5913430");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var body = await response.Content.ReadAsStringAsync();
+                    var data = JObject.Parse(body);
+                    isEnabled = Convert.ToBoolean(data["jobDetails"]?["enabled"] ?? bool.FalseString);
+                }
+                else
+                    return StatusCode(502, "there was a failure retrieving the discord bot's cron-job enabled status.");
+            }
+            catch (Exception)
+            {
+                return StatusCode(503, "there was a error retrieving the discord bot's cron-job enabled status.");
+            }
+
+            //3. if the cron-job service that automatically pings the bot is not enabled, re-enable it
+            if (!isEnabled)
+            {
+                try
+                {
+                    request = new(HttpMethod.Patch, "/jobs/5913430")
+                    {
+                        Content = new StringContent("{\"job\":{\"enabled\":true}}")
+                    };
+                    request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                    response = await client.SendAsync(request);
+
+                    if (!response.IsSuccessStatusCode)
+                        return StatusCode(502, "there was a failure enabling the discord bot's cron-job.");
+                }
+                catch (Exception)
+                {
+                    return StatusCode(502, "there was an error enabling the discord bot's cron-job.");
+                }
+            }
+
+            return Ok("bot is awake and cron-job service is enabled.");
         }
 
         [HttpGet]
@@ -67,7 +151,7 @@ namespace KruceBlake.Api.Controllers
             {
                 return NotFound();
             }
-            JsonFileUtils.WriteDynamicJsonObject(json, fullPath);
+            JsonWriterHelper.WriteDynamicJsonObject(json, fullPath);
             return Ok(json);
         }
     }

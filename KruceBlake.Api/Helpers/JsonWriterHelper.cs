@@ -1,9 +1,9 @@
 ﻿using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 
-namespace KruceBlake.Api.Utilities
+namespace KruceBlake.Api.Helpers
 {
-    public static class JsonFileUtils
+    public static class JsonWriterHelper
     {
         public static void WriteDynamicJsonObject(JObject jsonObj, string fileName)
         {
