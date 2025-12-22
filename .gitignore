@@ -340,3 +340,4 @@ ASALocalRun/
 # BeatPulse healthcheck temp database
 healthchecksdb
 /KruceBlake.Api/appsettings.json
+/KruceBlake.Api/Data/*

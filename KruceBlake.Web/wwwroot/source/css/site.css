@@ -225,6 +225,11 @@
   background-size: cover;
   filter: grayscale(70%);
 }
+.projects-section .project-lanl {
+  background-image: url(/dist/images/project-lanl.jpg);
+  background-size: cover;
+  filter: grayscale(70%);
+}
 
 .signup-section {
   padding: 10rem 0;
