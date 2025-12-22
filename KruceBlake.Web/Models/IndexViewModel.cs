@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Runtime.Versioning;
 
 namespace KruceBlake.Web.Models
