@@ -1,34 +1,39 @@
-using System.IO;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
+﻿using KruceBlake.Web.Extensions;
+using Microsoft.AspNetCore.Razor.TagHelpers;
 using Serilog;
 
-namespace KruceBlake.Web
-{
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            var configuration = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile(path: "appsettings.json", optional: false, reloadOnChange: true)
-                .Build();
+var builder = WebApplication.CreateBuilder(args);
 
-            Log.Logger = new LoggerConfiguration()
+Log.Logger = new LoggerConfiguration()
                 .Enrich.FromLogContext()
-                .ReadFrom.Configuration(configuration)
+                .ReadFrom.Configuration(builder.Configuration)
                 .CreateLogger();
 
-            CreateHostBuilder(args).Build().Run();
-        }
+// Add services to the container.
+builder.Services.AddSerilog();
+builder.Services.AddControllersWithViews();
+builder.Services.Configure<GoogleAnalyticsOptions>(options => builder.Configuration.GetSection("GoogleAnalytics").Bind(options));
+builder.Services.AddTransient<ITagHelperComponent, GoogleAnalyticsTagHelperComponent>();
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .UseSerilog()
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
-    }
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler("/Home/Error");
+    app.UseStatusCodePagesWithReExecute("/Error/{0}");
+    app.UseHsts();
 }
+
+app.UseSerilogRequestLogging();
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+app.UseRouting();
+app.UseAuthorization();
+app.MapStaticAssets();
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}")
+    .WithStaticAssets();
+
+app.Run();
