@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System.Net.Http.Headers;
 using System.Threading.RateLimiting;
 
@@ -34,7 +35,12 @@ builder.Services.AddHttpClient("CronJob", client =>
     client.BaseAddress = new Uri("https://api.cron-job.org/");
     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", builder.Configuration["CronJobApiBearerToken"]);
 });
-builder.Services.AddControllers().AddNewtonsoftJson();
+builder.Services.AddControllers()
+    .AddNewtonsoftJson(options =>
+    {
+        options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+        options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+    });
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
