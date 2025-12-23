@@ -104,49 +104,49 @@ namespace KruceBlake.Api.Controllers
         [HttpGet]
         public IActionResult GetBookmarks()
         {
-            return GetJson("bookmarks.json");
+            return GetJson("bookmarks");
         }
         [ApiKey]
         [HttpPut]
         public IActionResult PutBookmarks([FromBody] JObject json)
         {
-            return UpdateJson("bookmarks.json", json);
+            return UpdateJson("bookmarks", json);
         }
         [HttpGet]
         public IActionResult GetReminders()
         {
-            return GetJson("reminders.json");
+            return GetJson("reminders");
         }
         [ApiKey]
         [HttpPut]
         public IActionResult PutReminders([FromBody] JObject json)
         {
-            return UpdateJson("reminders.json", json);
+            return UpdateJson("reminders", json);
         }
         [HttpGet]
         public IActionResult GetCountdowns()
         {
-            return GetJson("countdowns.json");
+            return GetJson("countdowns");
         }
         [ApiKey]
         [HttpPut]
         public IActionResult PutCountdowns([FromBody] JObject json)
         {
-            return UpdateJson("countdowns.json", json);
+            return UpdateJson("countdowns", json);
         }
         private IActionResult GetJson(string fileName)
         {
-            var fullPath = Path.Combine(_webHostEnvironment.ContentRootPath, $"data\\{fileName}");
+            var fullPath = Path.Combine(_webHostEnvironment.ContentRootPath, $"data\\{fileName}.json");
             if (!Path.Exists(fullPath))
             {
                 return NotFound();
             }
             var data = System.IO.File.ReadAllText(fullPath);
-            return Ok(data);
+            return Content(data, "application/json");
         }
         private IActionResult UpdateJson(string fileName, JObject json)
         {
-            var fullPath = Path.Combine(_webHostEnvironment.ContentRootPath, $"data\\{fileName}");
+            var fullPath = Path.Combine(_webHostEnvironment.ContentRootPath, $"data\\{fileName}.json");
             if (!Path.Exists(fullPath))
             {
                 return NotFound();
