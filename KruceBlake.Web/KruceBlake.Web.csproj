@@ -19,9 +19,6 @@
     <PackageReference Include="Serilog.AspNetCore" Version="10.0.0" />
     <PackageReference Include="Serilog.Settings.Configuration" Version="10.0.0" />
     <PackageReference Include="Serilog.Sinks.File" Version="7.0.0" />
-    <PackageReference Include="System.Collections" Version="4.3.0" />
-    <PackageReference Include="System.Diagnostics.Debug" Version="4.3.0" />
-    <PackageReference Include="System.Runtime.Extensions" Version="4.3.1" />
     <Content Update="wwwroot\source\**\*.*" CopyToPublishDirectory="Never" />
   </ItemGroup>
 </Project>

@@ -341,3 +341,5 @@ ASALocalRun/
 healthchecksdb
 /KruceBlake.Api/appsettings.json
 /KruceBlake.Api/Data/*
+/KruceBlake.Web/wwwroot/dist/images/stars.mp4
+/KruceBlake.Web/wwwroot/dist/images/stars.webm
