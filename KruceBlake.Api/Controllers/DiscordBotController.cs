@@ -52,7 +52,7 @@ namespace KruceBlake.Api.Controllers
 
             if (!isRunning)
             {
-                Response.Headers.Add(HeaderNames.RetryAfter, "120"); //2 mins
+                Response.Headers.Append(HeaderNames.RetryAfter, "120"); //2 mins
                 return StatusCode(503, $"bot was pinged {maxAttempts} times and is either still asleep or waking up. please retry in a couple minutes.");
             }
 

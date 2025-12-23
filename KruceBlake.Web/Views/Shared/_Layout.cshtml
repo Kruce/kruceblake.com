@@ -61,16 +61,16 @@
     <!-- Header -->
     <header class="masthead">
         <video class="background-video" autoplay loop muted poster="~/dist/images/stars_full.png">
-            <source src="~/dist/images/stars.mp4" type="video/mp4">
-            <source src="~/dist/images/stars.webm" type="video/webm">
-            <img src="~/dist/images/stars_full.png" title="Your browser does not support the <video> tag">
+            <source src="~/dist/images/stars.mp4" type="video/mp4" aria-label="slowly zooming in then out on space with a bunch of similar shaped stars lit up blue by a brighter centered star in a much further distance">
+            <source src="~/dist/images/stars.webm" type="video/webm" aria-label="slowly zooming in then out on space with a bunch of similar shaped stars lit up blue by a brighter centered star in a much further distance">
+            <img src="~/dist/images/stars_full.png" title="Your browser does not support the <video> tag" alt="space with a bunch of similar shaped stars lit up blue by a brighter centered star in a much further distance">
         </video>
         <div class="container d-flex h-100 align-items-center">
             <div id="headerContent" class="mx-auto text-center">
                 <canvas id="mastHeadCanvas"></canvas>
                 <h1 class="mx-auto my-0">kruce blake</h1>
                 <h2 class="text-white-50 mx-auto mt-2 mb-5">
-                    <a href="" class="text-white-50 typewrite" data-period="2000" data-type='[ "software engineer", "application developer", "programmer", "full-stack developer"  ]' aria-label="rotating text that reads: programmer, application developer, software engineer">
+                    <a href="" class="text-white-50 typewrite" data-period="2000" data-type='[ "software engineer", "application developer", "programmer", "full-stack developer"  ]' aria-label="rotating text in the style of a typewriter typing it that reads: software engineer, application developer, programmer, and full-stack developer">
                         <span class="wrap"></span>
                     </a>
                 </h2>
@@ -81,7 +81,7 @@
         </div>
     </header>
     @RenderBody()
-    <div id="egg-box" class="egg"><img id="Egg" /></div>
+    <div id="egg-box" class="egg"><img id="Egg" alt="a cropped animated image of John Travolta from a scene in the movie Pulp Fiction where he looks around confused" /></div>
     <!-- Footer -->
     <footer class="bg-black small text-center text-white-50">
         <div class="container">
