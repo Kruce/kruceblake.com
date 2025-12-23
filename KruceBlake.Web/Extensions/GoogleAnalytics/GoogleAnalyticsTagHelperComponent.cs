@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Razor.TagHelpers;
 using Microsoft.Extensions.Options;
-using System;
 
 namespace KruceBlake.Web.Extensions
 {
