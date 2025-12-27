@@ -1,33 +1,38 @@
+using Microsoft.Net.Http.Headers;
 using Newtonsoft.Json;
+using Serilog;
 using System.Net.Http.Headers;
 using System.Threading.RateLimiting;
 
 var builder = WebApplication.CreateBuilder(args);
 
+Log.Logger = new LoggerConfiguration()
+    .ReadFrom.Configuration(builder.Configuration)
+    .CreateLogger();
+
+builder.Services.AddSerilog();
 builder.Services.AddRateLimiter(options =>
 {
-    options.OnRejected = async (context, token) =>
+    options.OnRejected = async (context, cancellationToken) =>
     {
         context.HttpContext.Response.StatusCode = StatusCodes.Status429TooManyRequests;
+        context.HttpContext.Response.Headers.Append(HeaderNames.RetryAfter, "60");
+
         if (context.Lease.TryGetMetadata(MetadataName.RetryAfter, out var retryAfter))
-        {
-            await context.HttpContext.Response.WriteAsync(
-                $"too many requests. please try again after {retryAfter.TotalMinutes} minute(s). ", cancellationToken: token);
-        }
+            await context.HttpContext.Response.WriteAsync($"rate limit exceeded. please try again after {retryAfter.TotalMinutes} minute(s).", cancellationToken);
         else
-        {
-            await context.HttpContext.Response.WriteAsync(
-                "too many requests. please try again later.", cancellationToken: token);
-        }
+            await context.HttpContext.Response.WriteAsync("rate limit exceeded. please try again later.", cancellationToken);
+
+        Log.Warning($"rate limit exceeded for IP: {context.HttpContext.Connection.RemoteIpAddress}");
     };
-    options.AddPolicy("Api", httpContext =>
-        RateLimitPartition.GetFixedWindowLimiter($"{httpContext.Request.Path}{httpContext.Connection.RemoteIpAddress}",
-        partition => new FixedWindowRateLimiterOptions
-        {
-            AutoReplenishment = true,
-            PermitLimit = 20,
-            Window = TimeSpan.FromMinutes(1)
-        }));
+    options.GlobalLimiter = PartitionedRateLimiter.Create<HttpContext, string>(httpContext =>
+        RateLimitPartition.GetFixedWindowLimiter(
+            partitionKey: httpContext.Connection.RemoteIpAddress?.ToString() ?? "unknown",
+            factory: _ => new FixedWindowRateLimiterOptions
+            {
+                PermitLimit = 20,
+                Window = TimeSpan.FromMinutes(1)
+            }));
 });
 
 builder.Services.AddHttpClient("CronJob", client =>
@@ -53,6 +58,7 @@ if (app.Environment.IsDevelopment())
 }
 
 //app.UseMiddleware<ApiKeyMiddleware>(); //enable if all requests should be authorized using the api key
+app.UseSerilogRequestLogging();
 app.UseRateLimiter();
 app.UseStatusCodePages();
 app.UseHttpsRedirection();

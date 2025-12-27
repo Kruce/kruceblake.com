@@ -1,24 +1,24 @@
 ﻿using KruceBlake.Api.Attributes;
 using KruceBlake.Api.Helpers;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.Net.Http.Headers;
 using Newtonsoft.Json.Linq;
 using MediaTypeHeaderValue = System.Net.Http.Headers.MediaTypeHeaderValue;
 
 namespace KruceBlake.Api.Controllers
 {
-    [EnableRateLimiting("Api")]
     [Route("[controller]/[action]")]
     [ApiController]
     public class DiscordBotController : ControllerBase
     {
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly IHttpClientFactory _httpClientFactory;
-        public DiscordBotController(IWebHostEnvironment webHostEnvironment, IHttpClientFactory httpClientFactory)
+        private readonly ILogger<DiscordBotController> _logger;
+        public DiscordBotController(IWebHostEnvironment webHostEnvironment, IHttpClientFactory httpClientFactory, ILogger<DiscordBotController> logger)
         {
             _webHostEnvironment = webHostEnvironment;
             _httpClientFactory = httpClientFactory;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -44,8 +44,9 @@ namespace KruceBlake.Api.Controllers
                     if (!isRunning)
                         await Task.Delay(5000);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    _logger.LogError(ex, "there was an error during sending a get request to koyeb.");
                     return StatusCode(502, "there was an error pinging the bot service. please inform the administrator.");
                 }
             }
@@ -53,6 +54,7 @@ namespace KruceBlake.Api.Controllers
             if (!isRunning)
             {
                 Response.Headers.Append(HeaderNames.RetryAfter, "120"); //2 mins
+                _logger.LogError($"a get request was sent to koyeb {maxAttempts} times and is unsuccessful.");
                 return StatusCode(503, $"bot was pinged {maxAttempts} times and is either still asleep or waking up. please retry in a couple minutes.");
             }
 
@@ -70,10 +72,14 @@ namespace KruceBlake.Api.Controllers
                     isEnabled = Convert.ToBoolean(data["jobDetails"]?["enabled"] ?? bool.FalseString);
                 }
                 else
+                {
+                    _logger.LogError("sending a get request to cron-job to get its job details returned an unsuccessful response.");
                     return StatusCode(502, "there was a failure retrieving the discord bot's cron-job enabled status.");
+                }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                _logger.LogError(ex, "there was an error during sending a get request to cron-job to get its job details.");
                 return StatusCode(503, "there was a error retrieving the discord bot's cron-job enabled status.");
             }
 
@@ -90,10 +96,14 @@ namespace KruceBlake.Api.Controllers
                     response = await client.SendAsync(request);
 
                     if (!response.IsSuccessStatusCode)
+                    {
+                        _logger.LogError("sending a patch request to cron-job to set enabled equal to true returned an unsuccessful response.");
                         return StatusCode(502, "there was a failure enabling the discord bot's cron-job.");
+                    }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    _logger.LogError(ex, "there was an error during sending a patch request to cron-job to set enabled equal to true.");
                     return StatusCode(502, "there was an error enabling the discord bot's cron-job.");
                 }
             }
