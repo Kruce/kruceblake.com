@@ -61,8 +61,14 @@
     <!-- Header -->
     <header class="masthead">
         <video class="background-video" autoplay loop muted poster="~/dist/images/stars_full.png">
-            <source src="~/dist/images/stars.mp4" type="video/mp4" aria-label="slowly zooming in then out on space with a bunch of similar shaped stars lit up blue by a brighter centered star in a much further distance">
-            <source src="~/dist/images/stars.webm" type="video/webm" aria-label="slowly zooming in then out on space with a bunch of similar shaped stars lit up blue by a brighter centered star in a much further distance">
+            <environment include="Development">
+                <source src="~/dist/images/stars.mp4" type="video/mp4" aria-label="slowly zooming in then out on space with a bunch of similar shaped stars lit up blue by a brighter centered star in a much further distance">
+                <source src="~/dist/images/stars.webm" type="video/webm" aria-label="slowly zooming in then out on space with a bunch of similar shaped stars lit up blue by a brighter centered star in a much further distance">
+            </environment>
+            <environment exclude="Development">
+                <source src="https://kruceblake.b-cdn.net/stars.mp4" type="video/mp4" aria-label="slowly zooming in then out on space with a bunch of similar shaped stars lit up blue by a brighter centered star in a much further distance">
+                <source src="https://kruceblake.b-cdn.net/stars.webm" type="video/webm" aria-label="slowly zooming in then out on space with a bunch of similar shaped stars lit up blue by a brighter centered star in a much further distance">
+            </environment>
             <img src="~/dist/images/stars_full.png" title="Your browser does not support the <video> tag" alt="space with a bunch of similar shaped stars lit up blue by a brighter centered star in a much further distance">
         </video>
         <div class="container d-flex h-100 align-items-center">
