@@ -288,21 +288,22 @@ cheet(`↑ ↑ ↓ ↓ ← → ← → b a`, function () {
     if (!image) {
         image = document.createElement('img');
         image.id = imageId;
-        image.alt = `a cropped animated image of John Travolta from a scene in the movie Pulp Fiction where he looks around confused, as if something else should happen, pops up then down after you entered the konami code`;
         container.append(image);
     }
-    fetchImageAsBlob(`/dist/images/konami.gif`, image);
+    fetchEggImgAsBlob(image);
     setTimeout(function () { container.slideDown(`slow`).delay(2200).slideUp(`slow`); }, 300);
 });
 
-async function fetchImageAsBlob(url, image) {
+async function fetchEggImgAsBlob(image) {
     try {
+        const url = `/dist/images/konami.gif`;
         const response = await fetch(url);
         if (!response.ok)
             throw new Error(`http error! status: ${response.status}`);
         const imageBlob = await response.blob();
         const objectUrl = URL.createObjectURL(imageBlob);
         image.src = objectUrl;
+        image.alt = `a cropped animated image of John Travolta from a scene in the movie Pulp Fiction where he looks around confused, as if something else should happen, pops up then down after you entered the konami code`;
         image.onload = () => {
             URL.revokeObjectURL(objectUrl);
         };
