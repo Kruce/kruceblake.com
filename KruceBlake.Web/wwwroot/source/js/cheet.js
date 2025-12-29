@@ -278,19 +278,19 @@ THE SOFTWARE.
 
 })(this);
 
-cheet(`↑ ↑ ↓ ↓ ← → ← → b a`, function () {
+cheet(`↑ ↑ ↓ ↓ ← → ← → b a`, async function () {
     gtag(`event`, `activate_easter_egg`, {
         'typed_konami': `true`
     });
     const container = $(`#eggBox`);
-    var imageId = `eggImage`;
-    var image = document.getElementById(imageId);
+    const imageId = `eggImage`;
+    let image = document.getElementById(imageId);
     if (!image) {
         image = document.createElement('img');
         image.id = imageId;
         container.append(image);
     }
-    fetchEggImgAsBlob(image);
+    await fetchEggImgAsBlob(image);
     setTimeout(function () { container.slideDown(`slow`).delay(2200).slideUp(`slow`); }, 300);
 });
 
