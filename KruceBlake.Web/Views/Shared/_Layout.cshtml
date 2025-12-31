@@ -68,7 +68,7 @@
     </nav>
     <!-- Header -->
     <header class="masthead">
-        <video class="background-video" autoplay loop muted poster="~/dist/images/stars_full.png">
+        <video id="backgroundVideo" class="background-video" autoplay loop muted poster="~/dist/images/stars_full.png">
             <environment include="Development">
                 <source src="~/dist/images/stars.mp4" type="video/mp4" aria-label="slowly zooming in then out on space with a bunch of similar shaped stars lit up blue by a brighter centered star in a much further distance">
                 <source src="~/dist/images/stars.webm" type="video/webm" aria-label="slowly zooming in then out on space with a bunch of similar shaped stars lit up blue by a brighter centered star in a much further distance">
@@ -110,6 +110,7 @@
         <script src="~/source/js/grayscale.js"></script>
         <script src="~/source/js/typewriter.js"></script>
         <script src="~/source/js/cheet.js"></script>
+        <script src="~/source/js/video-pause.js"></script>
     </environment>
     <environment exclude="Development">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"
