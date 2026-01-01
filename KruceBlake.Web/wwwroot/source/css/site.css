@@ -299,31 +299,31 @@
   bottom: 0;
 }
 
-#notfound {
+#error-div {
   position: relative;
   height: 100vh;
 }
 
-#notfound .notfound {
+#error-div .error {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
 }
 
-.notfound {
+.error {
   max-width: 410px;
   width: 100%;
   text-align: center;
 }
 
-.notfound .notfound-404 {
+.error .error-title {
   height: 280px;
   position: relative;
   z-index: -1;
 }
 
-.notfound .notfound-404 h1 {
+.error .error-title h1 {
   font-family: "Montserrat", sans-serif;
   font-size: 230px;
   margin: 0px;
@@ -338,7 +338,7 @@
   background-position: center;
 }
 
-.notfound h2 {
+.error h2 {
   font-family: "Montserrat", sans-serif;
   color: #000;
   font-size: 24px;
@@ -347,7 +347,7 @@
   margin-top: 0;
 }
 
-.notfound p {
+.error p {
   font-family: "Montserrat", sans-serif;
   color: #000;
   font-size: 14px;
@@ -356,7 +356,7 @@
   margin-top: 0px;
 }
 
-.notfound a {
+.error a {
   font-family: "Montserrat", sans-serif;
   font-size: 14px;
   text-decoration: none;
@@ -371,10 +371,10 @@
 }
 
 @media only screen and (max-width: 767px) {
-  .notfound .notfound-404 {
+  .error .error-title {
     height: 142px;
   }
-  .notfound .notfound-404 h1 {
+  .error .error-title h1 {
     font-size: 112px;
   }
 }

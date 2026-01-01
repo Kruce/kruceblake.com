@@ -1,0 +1,15 @@
+﻿@model ErrorViewModel
+@{
+    Layout = "_LayoutError";
+    ViewData["Title"] = Model.Title;
+}
+
+<div id="error-div">
+    <div class="error">
+        <div class="error-title">
+            <h1>@Model.Title</h1>
+        </div>
+        <h2>@Model.Message</h2>
+        <a asp-action="Index" asp-controller="Home">← kruceblake.com</a>
+    </div>
+</div>
