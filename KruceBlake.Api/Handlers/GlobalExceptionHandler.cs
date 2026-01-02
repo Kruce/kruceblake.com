@@ -13,7 +13,6 @@ namespace KruceBlake.Api.Handlers
             var problemDetails = new ProblemDetails
             {
                 Title = "An error occurred",
-                Status = httpContext.Response.StatusCode,
                 Detail = exception.Message,
                 Instance = httpContext.Request.Path
             };
@@ -25,13 +24,13 @@ namespace KruceBlake.Api.Handlers
                 httpContext.Response.StatusCode = statusCodeInt;
             }
 
+            problemDetails.Status = httpContext.Response.StatusCode;
+
             var id = Activity.Current?.Id ?? httpContext.TraceIdentifier;
 
             problemDetails.Extensions.Add("referenceId", id);
 
             LogError(id, problemDetails.Title);
-
-            problemDetails.Status = httpContext.Response.StatusCode;
 
             await httpContext.Response.WriteAsJsonAsync(problemDetails, cancellationToken);
             return true;
