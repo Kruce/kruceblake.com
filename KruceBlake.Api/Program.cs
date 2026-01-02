@@ -1,3 +1,4 @@
+using KruceBlake.Api.Handlers;
 using Microsoft.Net.Http.Headers;
 using Newtonsoft.Json;
 using Serilog;
@@ -48,6 +49,8 @@ builder.Services.AddControllers()
     });
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+builder.Services.AddProblemDetails();
 
 var app = builder.Build();
 
@@ -58,6 +61,7 @@ if (app.Environment.IsDevelopment())
 }
 
 //app.UseMiddleware<ApiKeyMiddleware>(); //enable if all requests should be authorized using the api key
+app.UseExceptionHandler();
 app.UseSerilogRequestLogging();
 app.UseRateLimiter();
 app.UseStatusCodePages();

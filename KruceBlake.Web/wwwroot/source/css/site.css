@@ -1,6 +1,6 @@
 /*!
  * kruceblake.com - kruceblake.com v1.0.0 (http://www.kruceblake.com/)
- * Copyright 2020-2025 
+ * Copyright 2020-2026 
  */
 
 #mainNav {
@@ -312,7 +312,7 @@
 }
 
 .error {
-  max-width: 410px;
+  max-width: 500px;
   width: 100%;
   text-align: center;
 }

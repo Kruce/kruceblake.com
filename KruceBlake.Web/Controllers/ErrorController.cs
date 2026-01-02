@@ -8,15 +8,13 @@ namespace KruceBlake.Web.Controllers
 {
     [AllowAnonymous]
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public class ErrorController(ILogger<ErrorController> logger) : Controller
+    public partial class ErrorController : Controller
     {
-        private readonly ILogger<ErrorController> _logger = logger;
-
         [Route("Error")]
         public IActionResult Error()
         {
             var model = GetErrorViewModel("error", "sorry about that..");
-            _logger.LogError($"Exception #{model.RequestId}", this);
+            LogError(model.ReferenceId);
             return View(model);
         }
 
@@ -24,7 +22,7 @@ namespace KruceBlake.Web.Controllers
         public IActionResult Error(int statusCodeInt)
         {
             var model = GetErrorViewModel(statusCodeInt.ToString(), ReasonPhrases.GetReasonPhrase(statusCodeInt));
-            _logger.LogError($"Exception #{model.RequestId}, Orignal path: {model.OriginalPath}", this);
+            LogErrorStatusCode(model.ReferenceId, model.OriginalPath);
             return View(model);
         }
 
@@ -33,7 +31,7 @@ namespace KruceBlake.Web.Controllers
             Title = errorTitle,
             Message = message,
             OriginalPath = HttpContext.Features.Get<Microsoft.AspNetCore.Diagnostics.IStatusCodeReExecuteFeature>()?.OriginalPath ?? "unknown",
-            RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+            ReferenceId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
         };
     }
 }
