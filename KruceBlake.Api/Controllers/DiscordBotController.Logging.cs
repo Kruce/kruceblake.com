@@ -11,7 +11,7 @@ namespace KruceBlake.Api.Controllers
              EventId = 0,
              Level = LogLevel.Error,
              Message = "an unhandled exception occurred during sending a get request to koyeb: {errorMessage}")]
-        private partial void LogErrorKoyeb(string errorMessage);
+        private partial void LogErrorKoyeb(string errorMessage, Exception exception);
 
         [LoggerMessage(
              EventId = 1,
@@ -29,7 +29,7 @@ namespace KruceBlake.Api.Controllers
              EventId = 3,
              Level = LogLevel.Error,
              Message = "there was an error during sending a get request to cron-job to get its job details: {errorMessage}")]
-        private partial void LogErrorCronJobDetails(string errorMessage);
+        private partial void LogErrorCronJobDetails(string errorMessage, Exception exception);
 
         [LoggerMessage(
              EventId = 4,
@@ -41,6 +41,6 @@ namespace KruceBlake.Api.Controllers
              EventId = 5,
              Level = LogLevel.Error,
              Message = "there was an error during sending a patch request to cron-job to set enabled equal to true: {errorMessage}")]
-        private partial void LogErrorCronJobPatch(string errorMessage);
+        private partial void LogErrorCronJobPatch(string errorMessage, Exception exception);
     }
 }

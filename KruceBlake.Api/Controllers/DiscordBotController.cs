@@ -45,7 +45,7 @@ namespace KruceBlake.Api.Controllers
                 }
                 catch (Exception e)
                 {
-                    LogErrorKoyeb(e.Message);
+                    LogErrorKoyeb(e.Message, e);
                     throw new BadGatewayException("there was an error pinging the bot service. please inform the administrator.");
                 }
             }
@@ -78,7 +78,7 @@ namespace KruceBlake.Api.Controllers
             }
             catch (Exception e)
             {
-                LogErrorCronJobDetails(e.Message);
+                LogErrorCronJobDetails(e.Message, e);
                 throw new BadGatewayException("there was a error retrieving the discord bot's cron-job enabled status.");
             }
 
@@ -102,7 +102,7 @@ namespace KruceBlake.Api.Controllers
                 }
                 catch (Exception e)
                 {
-                    LogErrorCronJobPatch(e.Message);
+                    LogErrorCronJobPatch(e.Message, e);
                     throw new BadGatewayException("there was an error enabling the discord bot's cron-job.");
                 }
             }

@@ -30,7 +30,7 @@ namespace KruceBlake.Api.Handlers
 
             problemDetails.Extensions.Add("referenceId", id);
 
-            LogError(id, problemDetails.Title);
+            LogError(id, exception.Message, exception);
 
             await httpContext.Response.WriteAsJsonAsync(problemDetails, cancellationToken);
             return true;
@@ -39,7 +39,7 @@ namespace KruceBlake.Api.Handlers
         [LoggerMessage(
              EventId = 0,
              Level = LogLevel.Error,
-             Message = "Reference ID: {requestId} Title: {title}")]
-        private partial void LogError(string requestId, string title);
+             Message = "Reference ID: {requestId} Message: {message}")]
+        private partial void LogError(string requestId, string message, Exception exception);
     }
 }
