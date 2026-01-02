@@ -312,7 +312,7 @@
 }
 
 .error {
-  max-width: 500px;
+  max-width: 550px;
   width: 100%;
   text-align: center;
 }
@@ -356,7 +356,7 @@
   margin-top: 0px;
 }
 
-.error a {
+.error-anchor-button {
   font-family: "Montserrat", sans-serif;
   font-size: 14px;
   text-decoration: none;
