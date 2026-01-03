@@ -1,4 +1,5 @@
-﻿using KruceBlake.Web.Extensions;
+﻿using KruceBlake.Web.Options;
+using KruceBlake.Web.TagHelpers;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using Serilog;
 
@@ -12,7 +13,8 @@ Log.Logger = new LoggerConfiguration()
 // Add services to the container.
 builder.Services.AddSerilog();
 builder.Services.AddControllersWithViews();
-builder.Services.Configure<GoogleAnalyticsOptions>(options => builder.Configuration.GetSection("GoogleAnalytics").Bind(options));
+builder.Services.Configure<GoogleAnalyticsOptions>(
+    builder.Configuration.GetSection(GoogleAnalyticsOptions.GoogleAnalytics));
 builder.Services.AddTransient<ITagHelperComponent, GoogleAnalyticsTagHelperComponent>();
 
 var app = builder.Build();
