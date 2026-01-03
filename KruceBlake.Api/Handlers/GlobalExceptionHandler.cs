@@ -12,8 +12,8 @@ namespace KruceBlake.Api.Handlers
         {
             var problemDetails = new ProblemDetails
             {
-                Title = "An error occurred",
-                Detail = exception.Message,
+                Title = "Error",
+                Detail = "An error has occurred. Contact the administrator with the reference id and date this occurred for assistance.",
                 Instance = httpContext.Request.Path
             };
 

@@ -13,9 +13,9 @@
         <h2>@Model.Message</h2>
         @if (Model.ShowReferenceId)
         {
-            var body = HttpUtility.UrlEncode($"Error Reference Id: {Model.ReferenceId}");
+            var body = HttpUtility.UrlEncode($"Error Reference Id: {Model.ReferenceId} on {DateTime.Now.ToShortDateString()}");
             <p>
-                <strong>Report this error to <a href="@($"mailto:admin@kruceblake.com?subject=Site%20Error%20on%20kruceblake.com&body={body}")">admin@kruceblake.com</a> with Reference Id:</strong>
+                <strong>Report this error to <a href="@($"mailto:admin@kruceblake.com?subject=Site%20Error%20on%20kruceblake.com&body={body}")">admin@kruceblake.com</a> with today's date & Reference Id:</strong>
                 <br />
                 <code>@Model.ReferenceId</code>
             </p>
