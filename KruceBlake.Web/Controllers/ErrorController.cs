@@ -15,49 +15,34 @@ namespace KruceBlake.Web.Controllers
         [Route("Error")]
         public IActionResult Error()
         {
-            var model = GetErrorViewModel("error", "sorry about that..", (HttpStatusCode)HttpContext.Response.StatusCode);
-            UpdatePathAndLogErrors(model);
+            var feature = HttpContext.Features.Get<IExceptionHandlerPathFeature>();
+            if (feature is null) //attempting to access /Error directly
+                return NotFound();
+
+            var model = GetErrorViewModel("error", "sorry about that..", feature.Path, (HttpStatusCode)HttpContext.Response.StatusCode);
+            LogError(model.ReferenceId, model.OriginalPath, feature.Error);
             return View(model);
         }
 
         [Route("Error/{statusCodeInt}")]
         public IActionResult Error(int statusCodeInt)
         {
-            var model = GetErrorViewModel(statusCodeInt.ToString(), ReasonPhrases.GetReasonPhrase(statusCodeInt), (HttpStatusCode)statusCodeInt);
-            UpdatePathAndLogErrors(model);
+            var feature = HttpContext.Features.Get<IStatusCodeReExecuteFeature>();
+            if (feature is null) //attempting to access /Error/{statusCodeInt} directly
+                return NotFound();
+
+            var model = GetErrorViewModel(statusCodeInt.ToString(), ReasonPhrases.GetReasonPhrase(statusCodeInt), feature.OriginalPath, (HttpStatusCode)statusCodeInt);
+            LogErrorStatusCode(model.ReferenceId, model.OriginalPath, model.StatusCode);
             return View(model);
         }
 
-        private ErrorViewModel GetErrorViewModel(string errorTitle, string message, HttpStatusCode statusCode) => new()
+        private ErrorViewModel GetErrorViewModel(string title, string message, string path, HttpStatusCode statusCode) => new()
         {
-            Title = errorTitle,
+            Title = title,
             Message = message,
+            OriginalPath = path,
             StatusCode = statusCode,
             ReferenceId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
         };
-
-        /// <summary>
-        /// Logs exceptions if any exist in the exception handler path feature as well as status code re-execute features and updates the original path in the error view model.
-        /// </summary>
-        /// <param name="model"></param>
-        private void UpdatePathAndLogErrors(ErrorViewModel model)
-        {
-            //Log original error if one exists
-            var features = HttpContext.Features;
-            var exceptionHandlerFeature = features.Get<IExceptionHandlerPathFeature>();
-            if (exceptionHandlerFeature != null)
-            {
-                model.OriginalPath = exceptionHandlerFeature.Path;
-                LogError(model.ReferenceId, model.OriginalPath, exceptionHandlerFeature.Error);
-            }
-            //Log re-executed status code if one exists
-            var reExecuteFeature = features.Get<IStatusCodeReExecuteFeature>();
-            if (reExecuteFeature != null)
-            {
-                model.OriginalPath = reExecuteFeature.OriginalPath;
-                LogErrorStatusCode(model.ReferenceId, model.OriginalPath, model.StatusCode);
-            }
-            model.OriginalPath ??= "unknown";
-        }
     }
 }
