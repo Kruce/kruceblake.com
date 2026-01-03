@@ -15,7 +15,7 @@ const observer = new IntersectionObserver(handleIntersection,
     { //options
         root: null, // relative to the viewport
         rootMargin: `0px`,
-        threshold: 0.05
+        threshold: 0
     });
 
 observer.observe(video);
