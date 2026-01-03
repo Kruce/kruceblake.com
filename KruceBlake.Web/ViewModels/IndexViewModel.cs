@@ -1,7 +1,4 @@
-﻿using System.Reflection;
-using System.Runtime.Versioning;
-
-namespace KruceBlake.Web.Models
+﻿namespace KruceBlake.Web.ViewModels
 {
     public class IndexViewModel
     {

@@ -1,4 +1,4 @@
-﻿using KruceBlake.Web.Models;
+﻿using KruceBlake.Web.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
@@ -16,7 +16,7 @@ namespace KruceBlake.Web.Controllers
         public IActionResult Error()
         {
             var model = GetErrorViewModel("error", "sorry about that..", (HttpStatusCode)HttpContext.Response.StatusCode);
-            LogErrors(model);
+            UpdatePathAndLogErrors(model);
             return View(model);
         }
 
@@ -24,7 +24,7 @@ namespace KruceBlake.Web.Controllers
         public IActionResult Error(int statusCodeInt)
         {
             var model = GetErrorViewModel(statusCodeInt.ToString(), ReasonPhrases.GetReasonPhrase(statusCodeInt), (HttpStatusCode)statusCodeInt);
-            LogErrors(model);
+            UpdatePathAndLogErrors(model);
             return View(model);
         }
 
@@ -36,17 +36,22 @@ namespace KruceBlake.Web.Controllers
             ReferenceId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
         };
 
-        private void LogErrors(ErrorViewModel model)
+        /// <summary>
+        /// Logs exceptions if any exist in the exception handler path feature as well as status code re-execute features and updates the original path in the error view model.
+        /// </summary>
+        /// <param name="model"></param>
+        private void UpdatePathAndLogErrors(ErrorViewModel model)
         {
             //Log original error if one exists
-            var exceptionHandlerFeature = HttpContext.Features.Get<IExceptionHandlerPathFeature>();
+            var features = HttpContext.Features;
+            var exceptionHandlerFeature = features.Get<IExceptionHandlerPathFeature>();
             if (exceptionHandlerFeature != null)
             {
                 model.OriginalPath = exceptionHandlerFeature.Path;
                 LogError(model.ReferenceId, model.OriginalPath, exceptionHandlerFeature.Error);
             }
             //Log re-executed status code if one exists
-            var reExecuteFeature = HttpContext.Features.Get<IStatusCodeReExecuteFeature>();
+            var reExecuteFeature = features.Get<IStatusCodeReExecuteFeature>();
             if (reExecuteFeature != null)
             {
                 model.OriginalPath = reExecuteFeature.OriginalPath;

@@ -1,4 +1,4 @@
-﻿using KruceBlake.Web.Models;
+﻿using KruceBlake.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Reflection;
 using System.Runtime.Versioning;
