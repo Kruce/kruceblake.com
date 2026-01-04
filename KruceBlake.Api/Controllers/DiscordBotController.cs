@@ -52,9 +52,8 @@ namespace KruceBlake.Api.Controllers
 
             if (!isRunning)
             {
-                Response.Headers.Append(HeaderNames.RetryAfter, "120"); //2 mins
                 LogKoyebMaxAttempts(maxAttempts);
-                throw new ServiceUnavailableException($"bot was pinged {maxAttempts} times and is either still asleep or waking up. please retry in a couple minutes.");
+                throw new ServiceUnavailableException($"bot was pinged {maxAttempts} times and is either still asleep or waking up. please retry in a couple minutes.", TimeSpan.FromMinutes(2));
             }
 
             //2. check if the cron-job service that automatically pings the bot is still enabled or not

@@ -2,7 +2,7 @@
 
 namespace KruceBlake.Api.Exceptions
 {
-    public class ServiceUnavailableException(string message) : BaseException(message, HttpStatusCode.ServiceUnavailable)
+    public class ServiceUnavailableException(string message, TimeSpan? retryAfter = null) : BaseException(message, HttpStatusCode.ServiceUnavailable, retryAfter)
     {
     }
 }
