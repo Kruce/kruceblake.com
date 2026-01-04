@@ -1,29 +1,22 @@
-﻿namespace KruceBlake.Api.Middleware
+﻿using KruceBlake.Api.Exceptions;
+using KruceBlake.Api.Options;
+using Microsoft.Extensions.Options;
+
+namespace KruceBlake.Api.Middleware
 {
-    public class ApiKeyMiddleware
+    public class ApiKeyMiddleware(RequestDelegate next, IOptions<KruceBlakeApiOptions> options)
     {
-        private readonly RequestDelegate _next;
-        private const string APIKEYNAME = "ApiKey";
-        public ApiKeyMiddleware(RequestDelegate next)
-        {
-            _next = next;
-        }
+        private readonly RequestDelegate _next = next;
+        private readonly KruceBlakeApiOptions _options = options.Value;
+
         public async Task InvokeAsync(HttpContext context)
         {
-            if (!context.Request.Headers.TryGetValue(APIKEYNAME, out var extractedApiKey))
-            {
-                context.Response.StatusCode = 401;
-                await context.Response.WriteAsync("Api Key was not provided.");
-                return;
-            }
-            var appSettings = context.RequestServices.GetRequiredService<IConfiguration>();
-            var apiKey = appSettings.GetValue<string>(APIKEYNAME);
-            if (!apiKey.Equals(extractedApiKey))
-            {
-                context.Response.StatusCode = 401;
-                await context.Response.WriteAsync("Unauthorized client.");
-                return;
-            }
+            if (!context.Request.Headers.TryGetValue(_options.HeaderName, out var extractedApiKey))
+                throw new UnauthorizedException("API Key was not provided");
+
+            if (!extractedApiKey.Equals(_options.Key))
+                throw new UnauthorizedException("API Key is not valid");
+
             await _next(context);
         }
     }

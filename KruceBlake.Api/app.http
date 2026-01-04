@@ -1,0 +1,7 @@
+@port = 0
+@apiKey = 0
+@baseUrl = https://localhost:{{port}}
+
+GET {{baseUrl}}/DiscordBot/GetBookmarks
+Accept: application/json
+X-KruceBlake-Api-Key: {{apiKey}}

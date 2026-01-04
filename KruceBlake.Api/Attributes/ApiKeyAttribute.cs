@@ -1,34 +1,26 @@
-﻿using Microsoft.AspNetCore.Mvc.Filters;
-using Microsoft.AspNetCore.Mvc;
+﻿using KruceBlake.Api.Exceptions;
+using KruceBlake.Api.Options;
+using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.Extensions.Options;
 
 namespace KruceBlake.Api.Attributes
 {
     [AttributeUsage(validOn: AttributeTargets.Class | AttributeTargets.Method)]
     public class ApiKeyAttribute : Attribute, IAsyncActionFilter
     {
-        private const string APIKEYNAME = "ApiKey";
         public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
-            if (!context.HttpContext.Request.Headers.TryGetValue(APIKEYNAME, out var extractedApiKey))
-            {
-                context.Result = new ContentResult()
-                {
-                    StatusCode = 401,
-                    Content = "Api Key was not provided"
-                };
-                return;
-            }
-            var appSettings = context.HttpContext.RequestServices.GetRequiredService<IConfiguration>();
-            var apiKey = appSettings.GetValue<string>(APIKEYNAME);
-            if (!apiKey.Equals(extractedApiKey))
-            {
-                context.Result = new ContentResult()
-                {
-                    StatusCode = 401,
-                    Content = "Api Key is not valid"
-                };
-                return;
-            }
+            var kruceBlakeApiOptions = context.HttpContext.RequestServices.GetRequiredService<IOptions<KruceBlakeApiOptions>>();
+
+            var kruceBlakeApi = kruceBlakeApiOptions.Value ?? 
+                throw new InternalServerErrorException("API options are not configured. Please notify the admin.");
+
+            if (!context.HttpContext.Request.Headers.TryGetValue(kruceBlakeApi.HeaderName, out var extractedApiKey))
+                throw new UnauthorizedException("API Key was not provided");
+
+            if (!kruceBlakeApi.Key.Equals(extractedApiKey))
+                throw new UnauthorizedException("API Key is not valid");
+
             await next();
         }
     }

@@ -2,7 +2,7 @@
 
 namespace KruceBlake.Api.Exceptions
 {
-    public class BadGatewayException(string message, HttpStatusCode statusCode = HttpStatusCode.BadGateway) : BaseException(message, statusCode)
+    public class BadGatewayException(string message) : BaseException(message, HttpStatusCode.BadGateway)
     {
     }
 }

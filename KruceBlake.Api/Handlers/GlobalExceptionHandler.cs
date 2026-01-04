@@ -17,11 +17,14 @@ namespace KruceBlake.Api.Handlers
                 Instance = httpContext.Request.Path
             };
 
-            if (exception is BaseException e)
+            if (exception is BaseException baseException)
             {
-                var statusCodeInt = (int)e.StatusCode;
+                var statusCodeInt = (int)baseException.StatusCode;
                 problemDetails.Title = ReasonPhrases.GetReasonPhrase(statusCodeInt);
+                problemDetails.Detail = baseException.Message;
                 httpContext.Response.StatusCode = statusCodeInt;
+                if (baseException.RetryAfter.HasValue)
+                    httpContext.Response.Headers.RetryAfter = baseException.RetryAfter.Value.TotalSeconds.ToString("F0");
             }
 
             problemDetails.Status = httpContext.Response.StatusCode;
