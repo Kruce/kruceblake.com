@@ -151,24 +151,34 @@ namespace KruceBlake.Api.Controllers
 
         private IActionResult GetJson(string fileName)
         {
-            var fullPath = Path.Combine(_webHostEnvironment.ContentRootPath, $"data\\{fileName}.json");
+            var fullPath = GetJsonFilePath(fileName);
+
             if (!Path.Exists(fullPath))
-            {
-                return NotFound();
-            }
-            var data = System.IO.File.ReadAllText(fullPath);
-            return Content(data, "application/json");
+                return JsonNotFound(fullPath);
+
+            var content = System.IO.File.ReadAllText(fullPath);
+            return Content(content, "application/json");
         }
 
         private IActionResult UpdateJson(string fileName, JObject json)
         {
-            var fullPath = Path.Combine(_webHostEnvironment.ContentRootPath, $"data\\{fileName}.json");
+            var fullPath = GetJsonFilePath(fileName);
+
             if (!Path.Exists(fullPath))
-            {
-                return NotFound();
-            }
-            JsonWriterHelper.WriteDynamicJsonObject(json, fullPath);
+                return JsonNotFound(fullPath);
+
+            JObjectHelper.WriteToFile(json, fullPath);
             return Ok(json);
+        }
+
+        private string GetJsonFilePath(string fileName)
+        {
+            return Path.Combine(_webHostEnvironment.ContentRootPath, $"data\\{fileName}.json");
+        }
+
+        private IActionResult JsonNotFound(string fullPath)
+        {
+            return NotFound($"No Json file found at '{fullPath}'.");
         }
     }
 }
