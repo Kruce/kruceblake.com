@@ -6,24 +6,24 @@ namespace KruceBlake.Web.Controllers
     public partial class ErrorController(ILogger<ErrorController> logger) : Controller
     {
         /// <summary>
-        /// Log a general error with the included request ID.
+        /// Log a general error with the included trace ID.
         /// </summary>
-        /// <param name="requestId"></param>
+        /// <param name="traceId"></param>
         [LoggerMessage(
             EventId = 0, 
             Level = LogLevel.Error, 
-            Message = "An exception has occurred. Request ID: {requestId}, Path: {path}")]
-        private partial void LogError(string requestId, string path, Exception exception);
+            Message = "An exception has occurred. Trace ID: {traceId}, Path: {path}")]
+        private partial void LogError(string traceId, string path, Exception exception);
 
         /// <summary>
-        /// Log a general status code error with the included request ID and original path.
+        /// Log a general status code error with the included trace ID and original path.
         /// </summary>
-        /// <param name="requestId"></param>
+        /// <param name="traceId"></param>
         /// <param name="originalPath"></param>
         [LoggerMessage(
             EventId = 1, 
             Level = LogLevel.Error, 
-            Message = "An exception has occurred. Request ID: {requestId}, Orignal path: {originalPath}, Status Code: {statusCode}")]
-        private partial void LogErrorStatusCode(string requestId, string originalPath, HttpStatusCode statusCode);
+            Message = "An exception has occurred. Trace ID: {traceId}, Orignal path: {originalPath}, Status Code: {statusCode}")]
+        private partial void LogErrorStatusCode(string traceId, string originalPath, HttpStatusCode statusCode);
     }
 }

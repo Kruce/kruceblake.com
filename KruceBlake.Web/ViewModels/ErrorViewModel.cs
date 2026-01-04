@@ -7,8 +7,8 @@ namespace KruceBlake.Web.ViewModels
         public required string Title { get; set; }
         public required string Message { get; set; }
         public HttpStatusCode StatusCode { get; set; }
-        public string ReferenceId { get; set; } = string.Empty;
+        public string TraceId { get; set; } = string.Empty;
         public string OriginalPath { get; set; } = "unknown";
-        public bool ShowReferenceId => !string.IsNullOrEmpty(ReferenceId);
+        public bool ShowTraceId => !string.IsNullOrEmpty(TraceId);
     }
 }

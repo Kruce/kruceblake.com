@@ -20,7 +20,7 @@ namespace KruceBlake.Web.Controllers
                 return NotFound();
 
             var model = GetErrorViewModel("error", "sorry about that..", feature.Path, (HttpStatusCode)HttpContext.Response.StatusCode);
-            LogError(model.ReferenceId, model.OriginalPath, feature.Error);
+            LogError(model.TraceId, model.OriginalPath, feature.Error);
             return View(model);
         }
 
@@ -32,7 +32,7 @@ namespace KruceBlake.Web.Controllers
                 return NotFound();
 
             var model = GetErrorViewModel(statusCodeInt.ToString(), ReasonPhrases.GetReasonPhrase(statusCodeInt), feature.OriginalPath, (HttpStatusCode)statusCodeInt);
-            LogErrorStatusCode(model.ReferenceId, model.OriginalPath, model.StatusCode);
+            LogErrorStatusCode(model.TraceId, model.OriginalPath, model.StatusCode);
             return View(model);
         }
 
@@ -42,7 +42,7 @@ namespace KruceBlake.Web.Controllers
             Message = message,
             OriginalPath = path,
             StatusCode = statusCode,
-            ReferenceId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+            TraceId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
         };
     }
 }

@@ -11,13 +11,13 @@
             <h1>@Model.Title</h1>
         </div>
         <h2>@Model.Message</h2>
-        @if (Model.ShowReferenceId)
+        @if (Model.ShowTraceId)
         {
-            var body = HttpUtility.UrlEncode($"Error Reference Id: {Model.ReferenceId} on {DateTime.Now.ToShortDateString()}");
+            var body = HttpUtility.UrlEncode($"Error - Trace Id: {Model.TraceId} on {DateTime.Now.ToShortDateString()}");
             <p>
-                <strong>Report this error to <a href="@($"mailto:admin@kruceblake.com?subject=Site%20Error%20on%20kruceblake.com&body={body}")">admin@kruceblake.com</a> with today's date & Reference Id:</strong>
+                <strong>Report this error to <a href="@($"mailto:admin@kruceblake.com?subject=Site%20Error%20on%20kruceblake.com&body={body}")">admin@kruceblake.com</a> with today's date & trace Id:</strong>
                 <br />
-                <code>@Model.ReferenceId</code>
+                <code>@Model.TraceId</code>
             </p>
         }
         <a class="error-anchor-button" asp-action="Index" asp-controller="Home">← kruceblake.com</a>

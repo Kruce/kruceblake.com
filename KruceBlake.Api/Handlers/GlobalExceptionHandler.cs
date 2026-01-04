@@ -13,7 +13,7 @@ namespace KruceBlake.Api.Handlers
             var problemDetails = new ProblemDetails
             {
                 Title = "Error",
-                Detail = "An error has occurred. Contact the administrator with the reference id and date this occurred for assistance.",
+                Detail = "An error has occurred. Contact the administrator with the trace id and date this occurred for assistance.",
                 Instance = httpContext.Request.Path
             };
 
@@ -31,7 +31,7 @@ namespace KruceBlake.Api.Handlers
 
             var id = Activity.Current?.Id ?? httpContext.TraceIdentifier;
 
-            problemDetails.Extensions.Add("referenceId", id);
+            problemDetails.Extensions.Add("traceId", id);
 
             LogError(id, exception.Message, exception);
 
@@ -42,7 +42,7 @@ namespace KruceBlake.Api.Handlers
         [LoggerMessage(
              EventId = 0,
              Level = LogLevel.Error,
-             Message = "Reference ID: {requestId} Message: {message}")]
-        private partial void LogError(string requestId, string message, Exception exception);
+             Message = "Trace ID: {traceId} Message: {message}")]
+        private partial void LogError(string traceId, string message, Exception exception);
     }
 }
