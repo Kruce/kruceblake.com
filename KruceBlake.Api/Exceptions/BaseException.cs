@@ -8,27 +8,27 @@ namespace KruceBlake.Api.Exceptions
 
         public TimeSpan? RetryAfter { get; }
 
-        public BaseException() 
+        protected BaseException() 
         { 
         }
 
-        public BaseException(string message)
+        protected BaseException(string message)
             : base(message) 
         { 
         }
 
-        public BaseException(string message, Exception innerException)
+        protected BaseException(string message, Exception innerException)
             : base(message, innerException) 
         { 
         }
 
-        public BaseException(string message, HttpStatusCode statusCode)
+        protected BaseException(string message, HttpStatusCode statusCode)
             : this(message)
         {
             StatusCode = statusCode;
         }
 
-        public BaseException(string message, HttpStatusCode statusCode, TimeSpan? retryAfter = null)
+        protected BaseException(string message, HttpStatusCode statusCode, TimeSpan? retryAfter = null)
             : this(message)
         {
             StatusCode = statusCode;

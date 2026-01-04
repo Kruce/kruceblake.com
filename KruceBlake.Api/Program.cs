@@ -24,7 +24,7 @@ builder.Services.AddRateLimiter(options =>
         Log.Warning($"rate limit exceeded for IP: {context.HttpContext.Connection.RemoteIpAddress}");
 
         if (context.Lease.TryGetMetadata(MetadataName.RetryAfter, out var retryAfter))
-            throw new TooManyRequestsException($"rate limit exceeded. please try again after {retryAfter.TotalMinutes} minute(s).", TimeSpan.FromMinutes(1));
+            throw new TooManyRequestsException($"rate limit exceeded. please try again after {retryAfter.TotalMinutes} minute(s).", retryAfter);
         else
             throw new TooManyRequestsException("rate limit exceeded. please try again later.");
     };

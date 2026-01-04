@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.WebUtilities;
 using System.Diagnostics;
+using System.Globalization;
 
 namespace KruceBlake.Api.Handlers
 {
@@ -24,7 +25,7 @@ namespace KruceBlake.Api.Handlers
                 problemDetails.Detail = baseException.Message;
                 httpContext.Response.StatusCode = statusCodeInt;
                 if (baseException.RetryAfter.HasValue)
-                    httpContext.Response.Headers.RetryAfter = baseException.RetryAfter.Value.TotalSeconds.ToString("F0");
+                    httpContext.Response.Headers.RetryAfter = baseException.RetryAfter.Value.TotalSeconds.ToString("F0", NumberFormatInfo.InvariantInfo);
             }
 
             problemDetails.Status = httpContext.Response.StatusCode;
