@@ -2,7 +2,6 @@
 using KruceBlake.Api.Exceptions;
 using KruceBlake.Api.Helpers;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Net.Http.Headers;
 using Newtonsoft.Json.Linq;
 using MediaTypeHeaderValue = System.Net.Http.Headers.MediaTypeHeaderValue;
 
@@ -51,10 +50,7 @@ namespace KruceBlake.Api.Controllers
             }
 
             if (!isRunning)
-            {
-                LogKoyebMaxAttempts(maxAttempts);
                 throw new ServiceUnavailableException($"bot was pinged {maxAttempts} times and is either still asleep or waking up. please retry in a couple minutes.", TimeSpan.FromMinutes(2));
-            }
 
             //2. check if the cron-job service that automatically pings the bot is still enabled or not
             bool isEnabled;
@@ -70,10 +66,7 @@ namespace KruceBlake.Api.Controllers
                     isEnabled = Convert.ToBoolean(data["jobDetails"]?["enabled"] ?? bool.FalseString);
                 }
                 else
-                {
-                    LogUnsuccessfulCronJobDetails();
                     throw new ServiceUnavailableException($"there was a failure retrieving the discord bot's cron-job enabled status.");
-                }
             }
             catch (Exception e)
             {
@@ -94,10 +87,7 @@ namespace KruceBlake.Api.Controllers
                     response = await client.SendAsync(request);
 
                     if (!response.IsSuccessStatusCode)
-                    {
-                        LogUnsuccessfulCronJobPatch();
                         throw new ServiceUnavailableException("there was a failure enabling the discord bot's cron-job.");
-                    }
                 }
                 catch (Exception e)
                 {
