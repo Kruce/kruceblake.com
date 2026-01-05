@@ -1,7 +1,6 @@
 using KruceBlake.Api.Exceptions;
 using KruceBlake.Api.Handlers;
 using KruceBlake.Api.Options;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Newtonsoft.Json;
 using Serilog;
 using System.Net.Http.Headers;
@@ -42,7 +41,7 @@ builder.Services.AddRateLimiter(options =>
 builder.Services.AddHttpClient("CronJob", client =>
 {
     client.BaseAddress = new Uri("https://api.cron-job.org/");
-    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(JwtBearerDefaults.AuthenticationScheme, builder.Configuration["CronJobApiKey"]);
+    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", builder.Configuration["CronJobApiKey"]);
 });
 
 builder.Services.AddControllers()
