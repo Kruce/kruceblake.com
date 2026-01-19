@@ -18,7 +18,7 @@ namespace KruceBlake.Api.Attributes
             if (!context.HttpContext.Request.Headers.TryGetValue(kruceBlakeApi.HeaderName, out var extractedApiKey))
                 throw new UnauthorizedException("API Key was not provided");
 
-            if (!kruceBlakeApi.Key.Equals(extractedApiKey))
+            if (!extractedApiKey.Equals(kruceBlakeApi.Key))
                 throw new UnauthorizedException("API Key is not valid");
 
             await next();
